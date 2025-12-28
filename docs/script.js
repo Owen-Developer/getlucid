@@ -269,8 +269,10 @@ async function getUserData(){
                 greeting = "Good Evening";
             }
             document.querySelector(".home-title").innerHTML = greeting;
-            localStorage.setItem("lastDream", "");
             if(!localStorage.getItem("lastDream") || localStorage.getItem("lastDream") != currentDate){
+                document.querySelector(".home-thank").style.display = "none";
+                document.querySelector(".home-cre-card").style.display = "flex";
+            } else {
                 document.querySelector(".home-thank").style.display = "none";
                 document.querySelector(".home-cre-card").style.display = "none";
             }
