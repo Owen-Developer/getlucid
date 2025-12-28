@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/icons/favicon.png" type="image/x-icon">
+    <title>GetLucid | Analytics</title>
+</head>
+<body>
+    <div class="analytics"></div>
+    
+    <div class="home-container width">
+        <div class="home-top">
+            <div class="home-title">Analytics</div>
+        </div>
+
+        <div class="ana-emp">
+            <div class="ana-emp-para">You must submit at least 3 dreams<br> to view your analytics.</div>
+            <div class="ana-emp-img">
+                <img src="images/vectors/nodata.svg" />
+            </div>
+            <a href="/journal.html" class="ana-emp-btn">Dream Journal</a>
+        </div>
+
+        <div class="ana-container">
+            <div class="ana-wrapper">
+                <div class="ana-head">Dreams</div>
+                <div class="ana-flex">
+                    <div class="ana-circ-container">
+                        <div class="ana-circ circ-fill" id="circLucid"></div>
+                        <div class="ana-circ circ-fill" id="circNormal"></div>
+                        <div class="ana-circ circ-fill" id="circNightmare"></div>
+                        <div class="ana-circ-mid"></div>
+                        <div class="ana-circ-content">
+                            <div class="ana-circ-head">26</div>
+                            <div class="ana-circ-txt">Dreams</div>
+                        </div>
+                    </div>
+                    <div class="ana-col">
+                        <div class="ana-section" style="border-left: 2px solid hsl(222, 100%, 38%);">
+                            <div class="ana-num">53%</div>
+                            <div class="ana-label">Lucid Dreams</div>
+                        </div>
+                        <div class="ana-section" style="border-left: 2px solid hsl(222, 100%, 58%);">
+                            <div class="ana-num">24%</div>
+                            <div class="ana-label">Normal Dreams</div>
+                        </div>
+                        <div class="ana-section" style="border-left: 2px solid hsl(222, 100%, 78%);">
+                            <div class="ana-num">23%</div>
+                            <div class="ana-label">Nightmares</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ana-low-flex">
+                <div class="ana-low-col ana-left-col">
+                    <div class="ana-wrapper">
+                        <div class="ana-stat-head">Emotions</div>
+                        <div class="ana-list-ul" id="emotionsUl">
+                            <!-- 
+                            <div class="ana-list-li">
+                                <div class="ana-list-label">Confidence</div>
+                                <div class="ana-list-flex">
+                                    <div class="ana-list-fill"></div>
+                                    <div class="ana-list-num">21</div>
+                                </div>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                    <div class="ana-wrapper">
+                        <div class="ana-stat-head">People</div>
+                        <div class="ana-list-ul" id="peopleUl">
+                            <!-- 
+                                <div class="ana-list-li">
+                                    <div class="ana-list-label">Larry</div>
+                                    <div class="ana-list-flex">
+                                        <div class="ana-list-fill"></div>
+                                        <div class="ana-list-num">21</div>
+                                    </div>
+                                </div>
+                                -->
+                        </div>
+                    </div>
+                    <div class="ana-wrapper">
+                        <div class="ana-stat-head">Emotions</div>
+                        <div class="ana-list-ul">
+                            <div class="ana-list-li">
+                                <div class="ana-list-label">Confidence</div>
+                                <div class="ana-list-flex">
+                                    <div class="ana-list-fill"></div>
+                                    <div class="ana-list-num">21</div>
+                                </div>
+                            </div>
+                            <div class="ana-list-li">
+                                <div class="ana-list-label">Joy</div>
+                                <div class="ana-list-flex">
+                                    <div class="ana-list-fill"></div>
+                                    <div class="ana-list-num">21</div>
+                                </div>
+                            </div>
+                            <div class="ana-list-li">
+                                <div class="ana-list-label">Fear</div>
+                                <div class="ana-list-flex">
+                                    <div class="ana-list-fill"></div>
+                                    <div class="ana-list-num">21</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ana-wrapper">
+                        <div class="ana-stat-head">Emotions</div>
+                        <div class="ana-list-ul">
+                            <div class="ana-list-li">
+                                <div class="ana-list-label">Confidence</div>
+                                <div class="ana-list-flex">
+                                    <div class="ana-list-fill"></div>
+                                    <div class="ana-list-num">21</div>
+                                </div>
+                            </div>
+                            <div class="ana-list-li">
+                                <div class="ana-list-label">Joy</div>
+                                <div class="ana-list-flex">
+                                    <div class="ana-list-fill"></div>
+                                    <div class="ana-list-num">21</div>
+                                </div>
+                            </div>
+                            <div class="ana-list-li">
+                                <div class="ana-list-label">Fear</div>
+                                <div class="ana-list-flex">
+                                    <div class="ana-list-fill"></div>
+                                    <div class="ana-list-num">21</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ana-low-col">
+                    <div class="ana-wrapper">
+                        <div class="ana-stat-head">Recurring</div>
+                        <div class="ana-semi-out" id="recurringCircle">
+                            <div class="ana-semi-holder">
+                                <div class="ana-semi-container">
+                                    <div class="ana-semi semi-fill"></div>
+                                    <div class="ana-semi semi-outline"></div>
+                                    <div class="ana-semi semi-mid"></div>
+                                </div>
+                            </div>
+                            <div class="ana-stat-col">
+                                <div class="ana-stat-icon">
+                                    <img src="images/icons/reverse.png" />
+                                </div>
+                                <div class="ana-stat-num">76%</div>
+                            </div>
+                        </div>
+                        <div class="ana-stat-flex">
+                            <div class="ana-stat-label">0%</div>
+                            <div class="ana-stat-label">100%</div>
+                        </div>
+                    </div>
+                    <div class="ana-wrapper">
+                        <div class="ana-stat-head">Vividness</div>
+                        <div class="ana-semi-out" id="vividCircle">
+                            <div class="ana-semi-holder">
+                                <div class="ana-semi-container">
+                                    <div class="ana-semi semi-fill"></div>
+                                    <div class="ana-semi semi-outline"></div>
+                                    <div class="ana-semi semi-mid"></div>
+                                </div>
+                            </div>
+                            <div class="ana-stat-col">
+                                <div class="ana-stat-icon">
+                                    <img src="images/icons/eye.png" />
+                                </div>
+                                <div class="ana-stat-num">76%</div>
+                            </div>
+                        </div>
+                        <div class="ana-stat-flex">
+                            <div class="ana-stat-label">0%</div>
+                            <div class="ana-stat-label">100%</div>
+                        </div>
+                    </div>
+                    <div class="ana-wrapper">
+                        <div class="ana-stat-head">Lucidity</div>
+                        <div class="ana-semi-out" id="lucidCircle">
+                            <div class="ana-semi-holder">
+                                <div class="ana-semi-container">
+                                    <div class="ana-semi semi-fill"></div>
+                                    <div class="ana-semi semi-outline"></div>
+                                    <div class="ana-semi semi-mid"></div>
+                                </div>
+                            </div>
+                            <div class="ana-stat-col">
+                                <div class="ana-stat-icon">
+                                    <img src="images/icons/moon.png" />
+                                </div>
+                                <div class="ana-stat-num">76%</div>
+                            </div>
+                        </div>
+                        <div class="ana-stat-flex">
+                            <div class="ana-stat-label">0%</div>
+                            <div class="ana-stat-label">100%</div>
+                        </div>
+                    </div>
+                    <div class="ana-wrapper">
+                        <div class="ana-stat-head">Quality</div>
+                        <div class="ana-semi-out">
+                            <div class="ana-semi-holder">
+                                <div class="ana-semi-container">
+                                    <div class="ana-semi semi-fill"></div>
+                                    <div class="ana-semi semi-outline"></div>
+                                    <div class="ana-semi semi-mid"></div>
+                                </div>
+                            </div>
+                            <div class="ana-stat-col">
+                                <div class="ana-stat-icon">
+                                    <img src="images/icons/eye.png" />
+                                </div>
+                                <div class="ana-stat-num">76%</div>
+                            </div>
+                        </div>
+                        <div class="ana-stat-flex">
+                            <div class="ana-stat-label">0%</div>
+                            <div class="ana-stat-label">100%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div style="height: 220px;"></div>
+    <script src="script.js"></script>
+</body>
+</html>

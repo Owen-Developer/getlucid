@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/icons/favicon.png" type="image/x-icon">
+    <title>GetLucid | Techniques</title>
+</head>
+<body>
+    <div class="login"></div>
+    
+
+    <div class="log-container">
+        <!-- 
+            <img src="images/icons/logo.png" class="log-logo" />
+        -->
+        <div class="log-title">Welcome Back!</div>
+        <div class="log-txt log-l-desc">Enter credentials, or continue as <a href="/" class="log-txt">guest</a></div>
+
+        <form class="log-form" id="signForm">
+            <div class="log-label">Name</div>
+            <input type="text" name="name" placeholder="Enter your name" class="log-input" required>
+
+            <div style="height: 18px;"></div>
+
+            <div class="log-label">Email</div>
+            <input type="text" name="email" placeholder="Enter your email" class="log-input" required>
+            <div class="log-error error-email">This email is already registered.</div>
+
+            <div style="height: 18px;"></div>
+
+            <div class="log-label">Password</div>
+            <input type="password" name="password" placeholder="Password" class="log-input" required>
+            <div class="log-error error-server">Something went wrong, try again.</div>
+
+            <button style="display: block;" type="submit" class="btn-log">Sign in</button>
+
+            <div class="log-txt log-l-alr" style="margin-top: 30px;">Already have an account? <a class="log-txt" id="switchLogin">Log in</a></div>
+        </form>
+
+        <form class="log-form" id="logForm" style="display: none; opacity: 0;">
+            <div class="log-label">Email</div>
+            <input type="text" name="email" placeholder="Enter your email" class="log-input" required>
+            <div class="log-error error-user" id="emailError">This email is not registered.</div>
+
+            <div style="height: 18px;"></div>
+
+            <div class="log-label">Password</div>
+            <input type="password" name="password" placeholder="Password" class="log-input" required>
+            <div class="log-error error-password" id="passwordError">Incorrect password.</div>
+            <div class="log-error error-server" id="serverError">Something went wrong, try again.</div>
+
+            <button style="display: block;" type="submit" class="btn-log">Sign in</button>
+
+            <div class="log-txt log-l-alr" style="margin-top: 30px;">Need to reset your password? <a class="log-txt" id="resetPassword">Click Here</a></div>
+        </form>
+
+        <form class="log-form" id="sendForm" style="display: none; opacity: 0;">
+            <div class="log-label">Email</div>
+            <input type="text" name="email" placeholder="Enter Email" class="log-input">
+            <div class="log-error" id="sendError">This email is not registered.</div>
+
+            <button style="display: block;" type="submit" class="btn-log">Send Code</button>
+        </form>
+
+        <form class="log-form" id="verForm" style="display: none; opacity: 0;">
+            <div class="log-label">Verification Code</div>
+            <input type="text" name="code" placeholder="Enter Code" class="log-input">
+            <div class="log-error" id="codeError">Incorrect code.</div>
+
+            <div style="height: 18px;"></div>
+
+            <div class="log-label">New Password</div>
+            <input type="password" name="password" placeholder="Password" class="log-input">
+
+            <button style="display: block;" type="submit" class="btn-log">Log in</button>
+        </form>
+    </div>
+    
+
+    <div style="height: 120px;"></div>
+    <script src="script.js"></script>
+</body>
+</html>

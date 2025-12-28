@@ -1,0 +1,9 @@
+<svg width="200" height="120" viewBox="0 0 200 120">
+  <path
+    d="M20 100 A80 80 0 0 1 180 100"
+    fill="none"
+    stroke="black"
+    stroke-width="20"
+    stroke-linecap="round"
+  />
+</svg>

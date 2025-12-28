@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/icons/favicon.png" type="image/x-icon">
+    <title>GetLucid | Journal</title>
+</head>
+<body>
+    <div class="journal"></div>
+    
+    <div class="home-container width" style="opacity: 0;">
+        <div class="dre-top">
+            <div class="home-title" style="line-height: 1;">Journal</div>
+            <div class="dre-btn"><span>+</span> Dream</div>
+        </div>
+
+        <div class="jur-container">
+            <div class="jur-para">Welcome to your dream journal! It's<br> currently empty.</div>
+            <div class="jur-img">
+                <img src="images/vectors/nodata.svg" />
+            </div>
+            <div class="btn-jur">+ New dream</div>
+        </div>
+
+        <div class="dre-container">
+            <div class="dre-filter">
+                <span>Lucid dreams</span>
+                <span>Normal dreams</span>
+                <span>Nightmares</span>
+                <span>Saved dreams</span>
+                <span>Recurring dreams</span>
+            </div>
+
+            <div class="dre-col">
+                <!--
+                    <div class="dre-wrapper">
+                        <div class="dre-save">
+                            <img src="images/icons/save.png" />
+                        </div>
+    
+                        <div class="dre-date">25/12/2025, 10:41am</div>
+                        <div class="dre-head">Treat Comet at Dusk in the Midnight</div>
+                        <div class="dre-tag">Recurring</div>
+                        <div class="dre-txt">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quo nesciunt quidem consequatur nihil excepturi? Tenetur Lorem ipsum dolor sit amet...</div>
+                    </div>
+                 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 
+    <div class="dre-modal">
+        <div class="dre-wrapper">
+            <img src="images/icons/xmark.png" class="dre-xmark" />
+
+            <div class="dre-date">25/12/2025, 10:41am</div>
+            <div class="dre-head">Treat Comet at Dusk in the Midnight</div>
+            <div class="dre-tag">Recurring</div>
+            <div class="dre-txt">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus quae magnam quisquam similique tempora facilis eaque magni officia dolorem? Sequi animi velit amet quisquam aliquam distinctio! Modi explicabo expedita ipsam ullam? Autem labore excepturi odit magnam quo veritatis eius inventore similique repellat aliquid voluptatum non distinctio eum eaque rerum quibusdam at magni, necessitatibus dolor quisquam est odio impedit. Dolores eum quisquam voluptatum illum fuga recusandae possimus aspernatur aliquam, debitis pariatur fugit dolorum repellat impedit optio voluptatem consectetur. Repellat ipsum natus numquam nostrum beatae quidem. Distinctio dolore laborum inventore? Ratione aperiam cum, accusamus officia ea temporibus assumenda esse enim voluptatem inventore delectus architecto alias dolores, sunt vero, rem voluptatum soluta ut! Vitae animi quasi repudiandae at vero cum earum nihil veritatis, accusamus adipisci quidem dolorem explicabo illo ipsa magni nisi ea similique deleniti error corporis. Doloremque eligendi sint molestiae quia error eaque unde nostrum debitis quas reiciendis nam culpa aliquam enim ratione aspernatur nihil vero tempora perspiciatis asperiores, quasi iure. Voluptatem, itaque. Incidunt dolorem eum, fuga praesentium eligendi velit culpa deserunt rem sint alias odio aperiam aliquam cumque natus sit enim? Ipsum, nemo. Corrupti laudantium nam officia. Reprehenderit, officiis. Maiores accusantium rerum voluptate aperiam vitae ea incidunt, laborum nostrum tempora odio magnam alias. Id nemo odit harum laudantium maiores praesentium eius earum voluptatum provident eum asperiores accusamus repudiandae vitae vel atque nostrum mollitia cumque architecto ducimus, voluptas perspiciatis voluptate eos ullam unde. Aperiam quod sunt nobis, sed error voluptatum ipsa perferendis sit reprehenderit, minus accusantium, similique vel nemo repellat dolor magni? Quia expedita cum dolorum accusantium repellendus, tenetur unde? Nobis iure, molestias hic harum, aperiam est perferendis earum tempora fugiat ab nemo? Ipsum ex non ratione voluptatum eius doloribus fuga delectus, eos maxime ab ducimus consequatur numquam totam fugiat incidunt hic itaque possimus molestiae blanditiis vero nostrum sed placeat sunt voluptatem!</div>
+        </div>
+    </div>
+     -->
+
+    <!-- 
+    <div class="not-container">
+        <div class="not-inside width">
+            <div class="not-top">
+                <img src="images/icons/chevron2.png" class="not-back" />
+                <div class="btn-not">Continue</div>
+            </div>
+            <div class="not-form">
+                <div class="not-label">Dream Title</div>
+                <input type="text" placeholder="Enter your title here" class="not-input" id="dreamTitle" />
+
+                <div class="not-label">How was your dream?</div>
+                <textarea type="text" placeholder="Describe your dream" class="not-area" id="dreamPara"></textarea>
+            </div>
+        </div>
+    </div>
+     -->
+
+    <div class="edit-container">
+        <input type="hidden" id="idInput" value="" />
+        <div class="edit-inside width">
+            <div class="edit-top">
+                <img src="images/icons/chevron2.png" class="edit-back" />
+                <div class="btn-edit-save btn-inactive">Save dream</div>
+            </div>
+
+            <div class="edit-toggle">
+                <div class="edit-toggle-option">Story</div>
+                <div class="edit-toggle-option">Details</div>
+                <div class="edit-toggle-option">Signs</div>
+                <span class="edit-toggle-left"></span>
+            </div>
+
+            <div class="edit-content" id="editStory">
+                <div class="edit-date-wrapper">
+                    <input type="hidden" id="dreamDate" />
+                    <img src="images/icons/calendar.png" class="edit-date-icon" />
+                    <div class="edit-date-txt">10 November 2025</div>
+                    <img src="images/icons/chevron2.png" class="edit-date-chev" />
+
+                    <div class="edit-change">
+                        <div class="edit-change-flex">
+                            <div class="edit-change-col">
+                                <div class="edit-change-chev">
+                                    <img src="images/icons/chevron2.png" />
+                                </div>
+                                <div class="edit-change-num">10</div>
+                                <div class="edit-change-label">Day</div>
+                                <div class="edit-change-chev edit-change-chev2">
+                                    <img src="images/icons/chevron2.png" />
+                                </div>
+                            </div>
+                            <div class="edit-change-col">
+                                <div class="edit-change-chev">
+                                    <img src="images/icons/chevron2.png" />
+                                </div>
+                                <div class="edit-change-num">11</div>
+                                <div class="edit-change-label">Month</div>
+                                <div class="edit-change-chev edit-change-chev2">
+                                    <img src="images/icons/chevron2.png" />
+                                </div>
+                            </div>
+                            <div class="edit-change-col">
+                                <div class="edit-change-chev">
+                                    <img src="images/icons/chevron2.png" />
+                                </div>
+                                <div class="edit-change-num">25</div>
+                                <div class="edit-change-label">Year</div>
+                                <div class="edit-change-chev edit-change-chev2">
+                                    <img src="images/icons/chevron2.png" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="edit-change-bottom">
+                            <div class="btn-edit-change btn-change-save">Save</div>
+                            <div class="btn-edit-change btn-change-cancel">Cancel</div>
+                        </div>
+                    </div>
+                </div>
+                <input type="text" placeholder="Dream title" id="dreamPara" class="edit-title-input" />
+                <textarea class="edit-para-area" id="dreamTitle" placeholder="Describe your dream"></textarea>
+                <div class="edit-cta-wrapper">
+                    <div class="edit-cta-vector">
+                        <img src="images/icons/padlock.png" />
+                    </div>
+                    <div class="edit-cta-title">Get unlimited access<br> to AI features</div>
+                    <div class="edit-cta-col">
+                        <div class="edit-cta-section">
+                            <div class="edit-cta-icon">
+                                <img src="images/icons/moon.png" />
+                            </div>
+                            <div class="edit-cta-txt">AI dream analysis & meaning</div>
+                        </div>
+
+                        <div class="edit-cta-section">
+                            <div class="edit-cta-icon">
+                                <img src="images/icons/moon.png" />
+                            </div>
+                            <div class="edit-cta-txt">AI image generation for dreams</div>
+                        </div>
+
+                        <div class="edit-cta-section">
+                            <div class="edit-cta-icon">
+                                <img src="images/icons/moon.png" />
+                            </div>
+                            <div class="edit-cta-txt">AI Q&A helper/chatbot</div>
+                        </div>
+
+                        <div class="edit-cta-section">
+                            <div class="edit-cta-icon">
+                                <img src="images/icons/moon.png" />
+                            </div>
+                            <div class="edit-cta-txt">Dream journal voice recordings</div>
+                        </div>
+                    </div>
+                    <div class="btn-edit-cta">Start free trial <img src="images/icons/arrow.png" /></div>
+                </div>
+            </div>
+
+            <div class="edit-content" id="editDetail">
+                <div class="edit-ques-wrapper">
+                    <div class="edit-ques-txt">What type of dream was it?</div>
+                    <div class="edit-ans-col">
+                        <div class="edit-ans"><span class="edit-span-active"></span> Lucid Dream</div>
+                        <div class="edit-ans"><span></span> Normal Dream</div>
+                        <div class="edit-ans"><span></span> Nightmare</div>
+                        <input type="hidden" value="Lucid Dream" id="dreamType" />
+                    </div>
+                </div>
+                <div class="edit-ques-wrapper">
+                    <div class="edit-ques-txt">How vivid was the dream?</div>
+                    <div class="edit-range">
+                        <input type="range" id="vivid" min="1" max="5" step="0.01" value="3" />
+                    </div>
+                    <div class="edit-label-flex">
+                        <div class="edit-label">Very bad</div>
+                        <div class="edit-label">Very good</div>
+                    </div>
+                </div>
+                <div class="edit-ques-wrapper">
+                    <div class="edit-ques-txt">How long was your dream?</div>
+                    <div class="edit-range">
+                        <input type="range" id="length" min="1" max="5" step="0.01" value="3" />
+                    </div>
+                    <div class="edit-label-flex">
+                        <div class="edit-label">Very short</div>
+                        <div class="edit-label">Very long</div>
+                    </div>
+                </div>
+                <div class="edit-ques-wrapper">
+                    <div class="edit-ques-txt">How was your sleep quality?</div>
+                    <div class="edit-range">
+                        <input type="range" id="sleep" min="1" max="5" step="0.01" value="3" />
+                    </div>
+                    <div class="edit-label-flex">
+                        <div class="edit-label">Very bad</div>
+                        <div class="edit-label">Very good</div>
+                    </div>
+                </div>
+                <div class="edit-ques-wrapper">
+                    <div class="edit-ques-txt">Is this a recurring dream?</div>
+                    <div class="edit-yn-flex">
+                        <div class="edit-yn edit-yn-active" id="recurring-no">No</div>
+                        <div class="edit-yn" id="recurring-yes">Yes</div>
+                    </div>
+                </div>
+                <div class="edit-ques-wrapper">
+                    <div class="edit-ques-txt">What was the dominant emotion?</div>
+                    <div class="edit-ans-col">
+                        <div class="edit-ans"><span class="edit-span-active"></span> Confidence</div>
+                        <div class="edit-ans"><span></span> Fear</div>
+                        <div class="edit-ans"><span></span> Joy</div>
+                        <div class="edit-ans"><span></span> Curiosity</div>
+                        <div class="edit-ans"><span></span> Confusion</div>
+                        <input type="hidden" value="Confidence" id="dreamEmotion" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="edit-content" id="editSign">
+                <div class="edit-ques-wrapper">
+                    <div class="edit-ques-txt">People</div>
+                    <div class="edit-tag-input">
+                        <input type="text" id="people" placeholder="+ Add people" />
+                        <div class="btn-tag">+</div>
+                    </div>
+                    <div class="edit-tag-flex">
+                        <!-- 
+                            <div class="edit-tag-tag"><img src="images/icons/xmark.png" />Larry</div>
+                            <div class="edit-tag-tag"><img src="images/icons/xmark.png" />Jack</div>
+                            <div class="edit-tag-tag"><img src="images/icons/xmark.png" />Jonathan</div>
+                            <div class="edit-tag-tag"><img src="images/icons/xmark.png" />Emelia</div>
+                        -->
+                        <input type="hidden" value="" id="dreamPeople" />
+                    </div>
+                </div>
+                <div class="edit-ques-wrapper">
+                    <div class="edit-ques-txt">Objects</div>
+                    <div class="edit-tag-input">
+                        <input type="text" id="objects" placeholder="+ Add objects" />
+                        <div class="btn-tag">+</div>
+                    </div>
+                    <div class="edit-tag-flex">
+                        <input type="hidden" value="" id="dreamObjects" />
+                    </div>
+                </div>
+            </div>
+
+            <div style="height: 220px;"></div>
+        </div>
+    </div>
+
+
+    <div style="height: 220px;"></div>
+    <script src="script.js"></script>
+</body>
+</html>

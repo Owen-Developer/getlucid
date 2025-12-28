@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/icons/favicon.png" type="image/x-icon">
+    <title>GetLucid | Techniques</title>
+</head>
+<body>
+    <div class="profile"></div>
+    
+    <div class="home-container width">
+        <div class="home-top">
+            <div class="home-title">Settings</div>
+        </div>
+
+        <div class="set-container">
+            <div class="set-ul">
+                <a href="/login.html" class="set-li set-li-border" id="createAccountOption">
+                    <div class="set-icon">
+                        <img src="images/icons/plus.png" />
+                    </div>
+                    <div class="set-txt">Create an Account</div>
+                    <img src="images/icons/chevron2.png" class="set-chevron" />
+                </a>
+                <a href="/login.html?start=login" class="set-li set-li-border" id="loginOption">
+                    <div class="set-icon">
+                        <img src="images/icons/user.png" />
+                    </div>
+                    <div class="set-txt">Log in</div>
+                    <img src="images/icons/chevron2.png" class="set-chevron" />
+                </a>
+                <div class="set-li set-li-border" id="logoutOption">
+                    <div class="set-icon">
+                        <img src="images/icons/exit.png" />
+                    </div>
+                    <div class="set-txt">Log out</div>
+                    <img src="images/icons/chevron2.png" class="set-chevron" />
+                </div>
+                <div class="set-li" id="deleteOption">
+                    <div class="set-icon">
+                        <img src="images/icons/trash.png" />
+                    </div>
+                    <div class="set-txt">Delete Data</div>
+                    <img src="images/icons/chevron2.png" class="set-chevron" />
+                </div>
+            </div>
+            <div class="set-ul">
+                <div class="set-li set-li-border">
+                    <div class="set-icon">
+                        <img src="images/icons/info.png" />
+                    </div>
+                    <div class="set-txt">About</div>
+                    <img src="images/icons/chevron2.png" class="set-chevron" />
+                </div>
+                <div class="set-li set-li-border">
+                    <div class="set-icon">
+                        <img src="images/icons/privacy.png" />
+                    </div>
+                    <div class="set-txt">Privacy policy</div>
+                    <img src="images/icons/chevron2.png" class="set-chevron" />
+                </div>
+                <div class="set-li">
+                    <div class="set-icon">
+                        <img src="images/icons/at.png" />
+                    </div>
+                    <div class="set-txt">Terms of service</div>
+                    <img src="images/icons/chevron2.png" class="set-chevron" />
+                </div>
+            </div>
+    
+            <div class="edit-cta-wrapper home-cta-wrapper" style="margin: 0;">
+                <div class="edit-cta-vector">
+                    <img src="images/icons/padlock.png" />
+                </div>
+                <div class="edit-cta-title">Get unlimited access<br> to AI features</div>
+                <div class="edit-cta-col">
+                    <div class="edit-cta-section">
+                        <div class="edit-cta-icon">
+                            <img src="images/icons/moon.png" />
+                        </div>
+                        <div class="edit-cta-txt">AI dream analysis & meaning</div>
+                    </div>
+    
+                    <div class="edit-cta-section">
+                        <div class="edit-cta-icon">
+                            <img src="images/icons/moon.png" />
+                        </div>
+                        <div class="edit-cta-txt">AI image generation for dreams</div>
+                    </div>
+    
+                    <div class="edit-cta-section">
+                        <div class="edit-cta-icon">
+                            <img src="images/icons/moon.png" />
+                        </div>
+                        <div class="edit-cta-txt">AI Q&A helper/chatbot</div>
+                    </div>
+    
+                    <div class="edit-cta-section">
+                        <div class="edit-cta-icon">
+                            <img src="images/icons/moon.png" />
+                        </div>
+                        <div class="edit-cta-txt">Dream journal voice recordings</div>
+                    </div>
+                </div>
+                <div class="btn-edit-cta">Start free trial <img src="images/icons/arrow.png" /></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="book-delete-modal all-modal" id="deleteDataModal">
+        <div class="book-delete-wrapper modal-wrapper">
+            <div class="book-delete-icon">
+                <img src="images/icons/trash.png" />
+            </div>
+            <div class="book-delete-title">Delete Account</div>
+            <div class="book-delete-para">Are you sure you want to delete your data? This cannot be undone.</div>
+            <div class="book-delete-flex">
+                <div class="btn-book-nodelete close-modal">No, keep it.</div>
+                <div class="btn-book-delete-booking" id="deleteDataBtn">Yes, delete!</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="height: 220px;"></div>
+    <script src="script.js"></script>
+</body>
+</html>
