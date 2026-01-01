@@ -14,178 +14,183 @@
     <title>GetLucid | Home</title>
 </head>
 <body>
-    <div class="home"></div>
+    <div class="top-cover"></div>
+    
+    <div class="page-holder" id="homeHolder" style="display: block;">
+        <div class="home"></div>
 
-    <div class="home-container width">
-        <div class="home-top">
-            <div class="home-title"></div>
-            <div class="home-acc-icon">
-                <img src="images/icons/noti2.png" class="home-acc-icon" />
-
-                <div class="noti-red">3</div>
-                <div class="noti-drop">
-                    <div class="noti-top">
-                        <div class="noti-head">Notifications</div>
+        <div class="home-container width">
+            <div class="home-top">
+                <div class="home-title"></div>
+                <div class="home-acc-icon">
+                    <img src="images/icons/noti2.png" class="home-acc-icon" />
+    
+                    <div class="noti-red">3</div>
+                    <div class="noti-drop">
+                        <div class="noti-top">
+                            <div class="noti-head">Notifications</div>
+                        </div>
+            
+                        <div class="noti-ul">
+                            <div class="noti-li">
+                                <div class="noti-dot"></div>
+                                <div class="noti-col">
+                                    <div class="noti-txt">Your password has been successfully changed.</div>
+                                    <div class="noti-date">Dec 25, 2025 at 08:32am</div>
+                                </div>
+                                <div class="noti-icon">
+                                    <img src="images/icons/padlock.png" />
+                                </div>
+                            </div>
+                            <div class="noti-li">
+                                <div class="noti-dot"></div>
+                                <div class="noti-col">
+                                    <div class="noti-txt">You have been assigned to a new job.</div>
+                                    <div class="noti-date">Dec 12, 2025 at 11:32am</div>
+                                </div>
+                                <div class="noti-icon">
+                                    <img src="images/icons/padlock.png" />
+                                </div>
+                            </div>
+                            <div class="noti-li" style="border-bottom: 0; padding-bottom: 0;">
+                                <div class="noti-dot"></div>
+                                <div class="noti-col">
+                                    <div class="noti-txt">Your monthly report has been updated.</div>
+                                    <div class="noti-date">Dec 01, 2025 at 04:14pm</div>
+                                </div>
+                                <div class="noti-icon">
+                                    <img src="images/icons/padlock.png" />
+                                </div>
+                            </div>
+                            <div class="emp-wrapper" id="notiEmpty">
+                                <img src="images/vectors/nodata.svg" class="emp-icon" style="width: 200px;" />
+                                <div class="emp-head">No Notifications</div>
+                                <div class="emp-para">We couldn't find any notifications<br> for you. Try again later.</div>
+                            </div>
+                        </div>
                     </div>
-        
-                    <div class="noti-ul">
-                        <div class="noti-li">
-                            <div class="noti-dot"></div>
-                            <div class="noti-col">
-                                <div class="noti-txt">Your password has been successfully changed.</div>
-                                <div class="noti-date">Dec 25, 2025 at 08:32am</div>
-                            </div>
-                            <div class="noti-icon">
-                                <img src="images/icons/padlock.png" />
-                            </div>
+                </div>
+            </div>
+    
+            <div class="home-cre-card">
+                <div class="home-cre-icon">
+                    <img src="images/icons/moon.png" />
+                </div>
+                <div class="home-cre-title">Did you have a<br> dream last night?</div>
+                <div onclick="changePage(2)" class="btn-home-cre btn-new">+ New dream</div>
+                <div class="btn-home-cre btn-forgot">I forgot</div>
+            </div>
+            <div class="home-cre-space"></div>
+    
+            <div class="home-thank">
+                <div class="home-thank-shadow">
+                    <div class="home-thank-icon">
+                        <img src="images/icons/check.png" />
+                    </div>
+                </div>
+                <div class="home-thank-title">Night Recorded!</div>
+            </div>
+    
+    
+            <div class="home-tech">
+                <div class="home-tech-title">Learn Techniques</div>
+                <div class="home-tech-ul">
+                    <div class="home-tech-wrapper">
+                        <img src="images/vectors/puzzle.png" class="home-tech-img hti1" />
+                        <div class="home-tech-head">Wake Induced<br> (WILD)</div>
+                        <div class="home-tech-txt">Consciously transition from wakefulness into dreaming, maintaining awareness while the body falls into a dream.</div>
+                        <div class="home-tech-arrow" id="arrow-0">
+                            <img src="images/icons/arrow.png" />
                         </div>
-                        <div class="noti-li">
-                            <div class="noti-dot"></div>
-                            <div class="noti-col">
-                                <div class="noti-txt">You have been assigned to a new job.</div>
-                                <div class="noti-date">Dec 12, 2025 at 11:32am</div>
-                            </div>
-                            <div class="noti-icon">
-                                <img src="images/icons/padlock.png" />
-                            </div>
+                    </div>
+                    <div class="home-tech-wrapper">
+                        <img src="images/vectors/spinner.png" class="home-tech-img hti2" />
+                        <div class="home-tech-head">Memory Induced<br> (MILD)</div>
+                        <div class="home-tech-txt">Use intention and affirmation before sleep to remember dreaming, increasing likelihood of recognizing the dream.</div>
+                        <div class="home-tech-arrow" id="arrow-1">
+                            <img src="images/icons/arrow.png" />
                         </div>
-                        <div class="noti-li" style="border-bottom: 0; padding-bottom: 0;">
-                            <div class="noti-dot"></div>
-                            <div class="noti-col">
-                                <div class="noti-txt">Your monthly report has been updated.</div>
-                                <div class="noti-date">Dec 01, 2025 at 04:14pm</div>
-                            </div>
-                            <div class="noti-icon">
-                                <img src="images/icons/padlock.png" />
-                            </div>
+                    </div>
+                    <div class="home-tech-wrapper">
+                        <img src="images/vectors/anchor.png" class="home-tech-img hti3" />
+                        <div class="home-tech-head">Anchor Technique<br></div>
+                        <div class="home-tech-txt">Focus on a consistent sensory cue like breathing or a sound to maintain awareness as you enter a dream.</div>
+                        <div class="home-tech-arrow" id="arrow-2">
+                            <img src="images/icons/arrow.png" />
                         </div>
-                        <div class="emp-wrapper" id="notiEmpty">
-                            <img src="images/vectors/nodata.svg" class="emp-icon" style="width: 200px;" />
-                            <div class="emp-head">No Notifications</div>
-                            <div class="emp-para">We couldn't find any notifications<br> for you. Try again later.</div>
+                    </div>
+                    <div onclick="changePage(1)" class="btn-home-tech">View All Techniques</div>
+                </div>
+    
+                <div class="edit-cta-wrapper home-cta-wrapper">
+                    <div class="edit-cta-vector">
+                        <img src="images/icons/padlock.png" />
+                    </div>
+                    <div class="edit-cta-title">Get unlimited access<br> to AI features</div>
+                    <div class="edit-cta-col">
+                        <div class="edit-cta-section">
+                            <div class="edit-cta-icon">
+                                <img src="images/icons/moon.png" />
+                            </div>
+                            <div class="edit-cta-txt">AI dream analysis & meaning</div>
+                        </div>
+    
+                        <div class="edit-cta-section">
+                            <div class="edit-cta-icon">
+                                <img src="images/icons/moon.png" />
+                            </div>
+                            <div class="edit-cta-txt">AI image generation for dreams</div>
+                        </div>
+    
+                        <div class="edit-cta-section">
+                            <div class="edit-cta-icon">
+                                <img src="images/icons/moon.png" />
+                            </div>
+                            <div class="edit-cta-txt">AI Q&A helper/chatbot</div>
+                        </div>
+    
+                        <div class="edit-cta-section">
+                            <div class="edit-cta-icon">
+                                <img src="images/icons/moon.png" />
+                            </div>
+                            <div class="edit-cta-txt">Dream journal voice recordings</div>
+                        </div>
+                    </div>
+                    <div class="btn-edit-cta">Start free trial <img src="images/icons/arrow.png" /></div>
+                </div>
+    
+                <div class="home-tech-title">Daily Habits</div>
+                <div class="home-tech-ul">
+                    <div class="home-tech-wrapper">
+                        <img src="images/vectors/feather.png" class="home-tech-img hti5" />
+                        <div class="home-tech-head">Dream Journaling</div>
+                        <div class="home-tech-txt">Recording your dreams after waking up, increases awareness, and shows important patterns in your dreams.</div>
+                        <div class="home-tech-arrow" id="arrow-6">
+                            <img src="images/icons/arrow.png" />
+                        </div>
+                    </div>
+                    <div class="home-tech-wrapper">
+                        <img src="images/vectors/timer.png" class="home-tech-img hti6" />
+                        <div class="home-tech-head">Wake Back to Bed</div>
+                        <div class="home-tech-txt">Waking then returning to sleep increases awareness while dreaming, improving lucid dream chances.</div>
+                        <div class="home-tech-arrow" id="arrow-7">
+                            <img src="images/icons/arrow.png" />
+                        </div>
+                    </div>
+                    <div class="home-tech-wrapper">
+                        <img src="images/vectors/reality.png" class="home-tech-img hti7" />
+                        <div class="home-tech-head">Reality Checks</div>
+                        <div class="home-tech-txt">Regularly questioning reality trains awareness, making it easier to recognize dreams and achieve lucidity.</div>
+                        <div class="home-tech-arrow" id="arrow-8">
+                            <img src="images/icons/arrow.png" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="home-cre-card">
-            <div class="home-cre-icon">
-                <img src="images/icons/moon.png" />
-            </div>
-            <div class="home-cre-title">Did you have a<br> dream last night?</div>
-            <a href="/journal.html" class="btn-home-cre btn-new">+ New dream</a>
-            <div class="btn-home-cre btn-forgot">I forgot</div>
-        </div>
-        <div class="home-cre-space"></div>
-
-        <div class="home-thank">
-            <div class="home-thank-shadow">
-                <div class="home-thank-icon">
-                    <img src="images/icons/check.png" />
-                </div>
-            </div>
-            <div class="home-thank-title">Night Recorded!</div>
-        </div>
-
-
-        <div class="home-tech">
-            <div class="home-tech-title">Learn Techniques</div>
-            <div class="home-tech-ul">
-                <div class="home-tech-wrapper">
-                    <img src="images/vectors/puzzle.png" class="home-tech-img hti1" />
-                    <div class="home-tech-head">Wake Induced<br> (WILD)</div>
-                    <div class="home-tech-txt">Consciously transition from wakefulness into dreaming, maintaining awareness while the body falls into a dream.</div>
-                    <div class="home-tech-arrow" id="arrow-0">
-                        <img src="images/icons/arrow.png" />
-                    </div>
-                </div>
-                <div class="home-tech-wrapper">
-                    <img src="images/vectors/spinner.png" class="home-tech-img hti2" />
-                    <div class="home-tech-head">Memory Induced<br> (MILD)</div>
-                    <div class="home-tech-txt">Use intention and affirmation before sleep to remember dreaming, increasing likelihood of recognizing the dream.</div>
-                    <div class="home-tech-arrow" id="arrow-1">
-                        <img src="images/icons/arrow.png" />
-                    </div>
-                </div>
-                <div class="home-tech-wrapper">
-                    <img src="images/vectors/anchor.png" class="home-tech-img hti3" />
-                    <div class="home-tech-head">Anchor Technique<br></div>
-                    <div class="home-tech-txt">Focus on a consistent sensory cue like breathing or a sound to maintain awareness as you enter a dream.</div>
-                    <div class="home-tech-arrow" id="arrow-2">
-                        <img src="images/icons/arrow.png" />
-                    </div>
-                </div>
-                <a href="techniques.html" class="btn-home-tech">View All Techniques</a>
-            </div>
-
-            <div class="edit-cta-wrapper home-cta-wrapper">
-                <div class="edit-cta-vector">
-                    <img src="images/icons/padlock.png" />
-                </div>
-                <div class="edit-cta-title">Get unlimited access<br> to AI features</div>
-                <div class="edit-cta-col">
-                    <div class="edit-cta-section">
-                        <div class="edit-cta-icon">
-                            <img src="images/icons/moon.png" />
-                        </div>
-                        <div class="edit-cta-txt">AI dream analysis & meaning</div>
-                    </div>
-
-                    <div class="edit-cta-section">
-                        <div class="edit-cta-icon">
-                            <img src="images/icons/moon.png" />
-                        </div>
-                        <div class="edit-cta-txt">AI image generation for dreams</div>
-                    </div>
-
-                    <div class="edit-cta-section">
-                        <div class="edit-cta-icon">
-                            <img src="images/icons/moon.png" />
-                        </div>
-                        <div class="edit-cta-txt">AI Q&A helper/chatbot</div>
-                    </div>
-
-                    <div class="edit-cta-section">
-                        <div class="edit-cta-icon">
-                            <img src="images/icons/moon.png" />
-                        </div>
-                        <div class="edit-cta-txt">Dream journal voice recordings</div>
-                    </div>
-                </div>
-                <div class="btn-edit-cta">Start free trial <img src="images/icons/arrow.png" /></div>
-            </div>
-
-            <div class="home-tech-title">Daily Habits</div>
-            <div class="home-tech-ul">
-                <div class="home-tech-wrapper">
-                    <img src="images/vectors/feather.png" class="home-tech-img hti5" />
-                    <div class="home-tech-head">Dream Journaling</div>
-                    <div class="home-tech-txt">Recording your dreams after waking up, increases awareness, and shows important patterns in your dreams.</div>
-                    <div class="home-tech-arrow" id="arrow-6">
-                        <img src="images/icons/arrow.png" />
-                    </div>
-                </div>
-                <div class="home-tech-wrapper">
-                    <img src="images/vectors/timer.png" class="home-tech-img hti6" />
-                    <div class="home-tech-head">Wake Back to Bed</div>
-                    <div class="home-tech-txt">Waking then returning to sleep increases awareness while dreaming, improving lucid dream chances.</div>
-                    <div class="home-tech-arrow" id="arrow-7">
-                        <img src="images/icons/arrow.png" />
-                    </div>
-                </div>
-                <div class="home-tech-wrapper">
-                    <img src="images/vectors/reality.png" class="home-tech-img hti7" />
-                    <div class="home-tech-head">Reality Checks</div>
-                    <div class="home-tech-txt">Regularly questioning reality trains awareness, making it easier to recognize dreams and achieve lucidity.</div>
-                    <div class="home-tech-arrow" id="arrow-8">
-                        <img src="images/icons/arrow.png" />
-                    </div>
-                </div>
-            </div>
-        </div>
+    
+        <div style="height: 200px;"></div>
     </div>
-
     <div class="det-container">
         <div class="det-inside width">
             <div class="det-top">
@@ -291,6 +296,653 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, aliquam eveni
             </div>
 
             <div style="height: 120px;"></div>
+        </div>
+    </div>
+
+    <div class="page-holder" id="techniquesHolder">
+        <div class="home-container width">
+            <div class="home-top">
+                <div class="home-title">Techniques</div>
+            </div>
+
+            <div class="home-tech">
+                <div class="home-tech-ul">
+                    <div class="home-tech-wrapper">
+                        <img src="images/vectors/puzzle.png" class="home-tech-img hti1" />
+                        <div class="home-tech-head">Wake Induced<br> (WILD)</div>
+                        <div class="home-tech-txt">Consciously transition from wakefulness into dreaming, maintaining awareness while the body falls into a dream.</div>
+                        <div class="home-tech-arrow" id="arrow-0">
+                            <img src="images/icons/arrow.png" />
+                        </div>
+                    </div>
+                    <div class="home-tech-wrapper">
+                        <img src="images/vectors/spinner.png" class="home-tech-img hti2" />
+                        <div class="home-tech-head">Memory Induced<br> (MILD)</div>
+                        <div class="home-tech-txt">Use intention and affirmation before sleep to remember dreaming, increasing likelihood of recognizing the dream.</div>
+                        <div class="home-tech-arrow" id="arrow-1">
+                            <img src="images/icons/arrow.png" />
+                        </div>
+                    </div>
+                    <div class="home-tech-wrapper">
+                        <img src="images/vectors/anchor.png" class="home-tech-img hti3" />
+                        <div class="home-tech-head">Anchor Technique<br></div>
+                        <div class="home-tech-txt">Focus on a consistent sensory cue like breathing or a sound to maintain awareness as you enter a dream.</div>
+                        <div class="home-tech-arrow" id="arrow-2">
+                            <img src="images/icons/arrow.png" />
+                        </div>
+                    </div>
+                    <div class="home-tech-wrapper">
+                        <img src="images/vectors/loop.png" class="home-tech-img hti4" />
+                        <div class="home-tech-head">Senses Induced<br> (SSILD)</div>
+                        <div class="home-tech-txt">Cycle attention through sight, sound, and touch, relaxing awareness and encouraging seamless dream entry easily.</div>
+                        <div class="home-tech-arrow" id="arrow-3">
+                            <img src="images/icons/arrow.png" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="home-tech-title margintop-60">Daily Habits</div>
+                <div class="home-tech-ul">
+                    <div class="home-tech-wrapper">
+                        <img src="images/vectors/feather.png" class="home-tech-img hti5" />
+                        <div class="home-tech-head">Dream Journaling</div>
+                        <div class="home-tech-txt">Recording your dreams after waking up, increases awareness, and shows important patterns in your dreams.</div>
+                        <div class="home-tech-arrow" id="arrow-6">
+                            <img src="images/icons/arrow.png" />
+                        </div>
+                    </div>
+                    <div class="home-tech-wrapper">
+                        <img src="images/vectors/timer.png" class="home-tech-img hti6" />
+                        <div class="home-tech-head">Wake Back to Bed</div>
+                        <div class="home-tech-txt">Waking then returning to sleep increases awareness while dreaming, improving lucid dream chances.</div>
+                        <div class="home-tech-arrow" id="arrow-7">
+                            <img src="images/icons/arrow.png" />
+                        </div>
+                    </div>
+                    <div class="home-tech-wrapper">
+                        <img src="images/vectors/reality.png" class="home-tech-img hti7" />
+                        <div class="home-tech-head">Reality Checks</div>
+                        <div class="home-tech-txt">Regularly questioning reality trains awareness, making it easier to recognize dreams and achieve lucidity.</div>
+                        <div class="home-tech-arrow" id="arrow-8">
+                            <img src="images/icons/arrow.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-holder" id="journalHolder">
+        <div class="home-container width">
+            <div class="dre-top">
+                <div class="home-title" style="line-height: 1;">Journal</div>
+                <div class="dre-btn"><span>+</span> Dream</div>
+            </div>
+
+            <div class="jur-container">
+                <div class="jur-para">Welcome to your dream journal! It's<br> currently empty.</div>
+                <div class="jur-img">
+                    <img src="images/vectors/nodata.svg" />
+                </div>
+                <div class="btn-jur">+ New dream</div>
+            </div>
+
+            <div class="dre-container">
+                <div class="dre-filter">
+                    <span>Lucid dreams</span>
+                    <span>Normal dreams</span>
+                    <span>Nightmares</span>
+                    <span>Saved dreams</span>
+                    <span>Recurring dreams</span>
+                </div>
+
+                <div class="dre-col">
+                    <!--
+                        <div class="dre-wrapper">
+                            <div class="dre-save">
+                                <img src="images/icons/save.png" />
+                            </div>
+        
+                            <div class="dre-date">25/12/2025, 10:41am</div>
+                            <div class="dre-head">Treat Comet at Dusk in the Midnight</div>
+                            <div class="dre-tag">Recurring</div>
+                            <div class="dre-txt">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quo nesciunt quidem consequatur nihil excepturi? Tenetur Lorem ipsum dolor sit amet...</div>
+                        </div>
+                    -->
+                </div>
+            </div>
+        </div>
+
+        <div class="edit-container">
+            <input type="hidden" id="idInput" value="" />
+            <div class="edit-inside width">
+                <div class="edit-top">
+                    <img src="images/icons/chevron2.png" class="edit-back" />
+                    <div class="btn-edit-save btn-inactive">Save dream</div>
+                </div>
+
+                <div class="edit-toggle">
+                    <div class="edit-toggle-option">Story</div>
+                    <div class="edit-toggle-option">Details</div>
+                    <div class="edit-toggle-option">Signs</div>
+                    <span class="edit-toggle-left"></span>
+                </div>
+
+                <div class="edit-content" id="editStory">
+                    <div class="edit-date-wrapper">
+                        <input type="hidden" id="dreamDate" />
+                        <img src="images/icons/calendar.png" class="edit-date-icon" />
+                        <div class="edit-date-txt">10 November 2025</div>
+                        <img src="images/icons/chevron2.png" class="edit-date-chev" />
+
+                        <div class="edit-change">
+                            <div class="edit-change-flex">
+                                <div class="edit-change-col">
+                                    <div class="edit-change-chev">
+                                        <img src="images/icons/chevron2.png" />
+                                    </div>
+                                    <div class="edit-change-num">10</div>
+                                    <div class="edit-change-label">Day</div>
+                                    <div class="edit-change-chev edit-change-chev2">
+                                        <img src="images/icons/chevron2.png" />
+                                    </div>
+                                </div>
+                                <div class="edit-change-col">
+                                    <div class="edit-change-chev">
+                                        <img src="images/icons/chevron2.png" />
+                                    </div>
+                                    <div class="edit-change-num">11</div>
+                                    <div class="edit-change-label">Month</div>
+                                    <div class="edit-change-chev edit-change-chev2">
+                                        <img src="images/icons/chevron2.png" />
+                                    </div>
+                                </div>
+                                <div class="edit-change-col">
+                                    <div class="edit-change-chev">
+                                        <img src="images/icons/chevron2.png" />
+                                    </div>
+                                    <div class="edit-change-num">25</div>
+                                    <div class="edit-change-label">Year</div>
+                                    <div class="edit-change-chev edit-change-chev2">
+                                        <img src="images/icons/chevron2.png" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="edit-change-bottom">
+                                <div class="btn-edit-change btn-change-save">Save</div>
+                                <div class="btn-edit-change btn-change-cancel">Cancel</div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="text" placeholder="Dream title" id="dreamTitle" class="edit-title-input" />
+                    <textarea class="edit-para-area" id="dreamPara" placeholder="Describe your dream"></textarea>
+                    <div class="edit-cta-wrapper">
+                        <div class="edit-cta-vector">
+                            <img src="images/icons/padlock.png" />
+                        </div>
+                        <div class="edit-cta-title">Get unlimited access<br> to AI features</div>
+                        <div class="edit-cta-col">
+                            <div class="edit-cta-section">
+                                <div class="edit-cta-icon">
+                                    <img src="images/icons/moon.png" />
+                                </div>
+                                <div class="edit-cta-txt">AI dream analysis & meaning</div>
+                            </div>
+
+                            <div class="edit-cta-section">
+                                <div class="edit-cta-icon">
+                                    <img src="images/icons/moon.png" />
+                                </div>
+                                <div class="edit-cta-txt">AI image generation for dreams</div>
+                            </div>
+
+                            <div class="edit-cta-section">
+                                <div class="edit-cta-icon">
+                                    <img src="images/icons/moon.png" />
+                                </div>
+                                <div class="edit-cta-txt">AI Q&A helper/chatbot</div>
+                            </div>
+
+                            <div class="edit-cta-section">
+                                <div class="edit-cta-icon">
+                                    <img src="images/icons/moon.png" />
+                                </div>
+                                <div class="edit-cta-txt">Dream journal voice recordings</div>
+                            </div>
+                        </div>
+                        <div class="btn-edit-cta">Start free trial <img src="images/icons/arrow.png" /></div>
+                    </div>
+                </div>
+
+                <div class="edit-content" id="editDetail">
+                    <div class="edit-ques-wrapper">
+                        <div class="edit-ques-txt">What type of dream was it?</div>
+                        <div class="edit-ans-col">
+                            <div class="edit-ans"><span class="edit-span-active"></span> Lucid Dream</div>
+                            <div class="edit-ans"><span></span> Normal Dream</div>
+                            <div class="edit-ans"><span></span> Nightmare</div>
+                            <input type="hidden" value="Lucid Dream" id="dreamType" />
+                        </div>
+                    </div>
+                    <div class="edit-ques-wrapper">
+                        <div class="edit-ques-txt">How vivid was the dream?</div>
+                        <div class="edit-range">
+                            <input type="range" id="vivid" min="1" max="5" step="0.01" value="3" />
+                        </div>
+                        <div class="edit-label-flex">
+                            <div class="edit-label">Very bad</div>
+                            <div class="edit-label">Very good</div>
+                        </div>
+                    </div>
+                    <div class="edit-ques-wrapper">
+                        <div class="edit-ques-txt">How long was your dream?</div>
+                        <div class="edit-range">
+                            <input type="range" id="length" min="1" max="5" step="0.01" value="3" />
+                        </div>
+                        <div class="edit-label-flex">
+                            <div class="edit-label">Very short</div>
+                            <div class="edit-label">Very long</div>
+                        </div>
+                    </div>
+                    <div class="edit-ques-wrapper">
+                        <div class="edit-ques-txt">How was your sleep quality?</div>
+                        <div class="edit-range">
+                            <input type="range" id="sleep" min="1" max="5" step="0.01" value="3" />
+                        </div>
+                        <div class="edit-label-flex">
+                            <div class="edit-label">Very bad</div>
+                            <div class="edit-label">Very good</div>
+                        </div>
+                    </div>
+                    <div class="edit-ques-wrapper">
+                        <div class="edit-ques-txt">Is this a recurring dream?</div>
+                        <div class="edit-yn-flex">
+                            <div class="edit-yn edit-yn-active" id="recurring-no">No</div>
+                            <div class="edit-yn" id="recurring-yes">Yes</div>
+                        </div>
+                    </div>
+                    <div class="edit-ques-wrapper">
+                        <div class="edit-ques-txt">What was the dominant emotion?</div>
+                        <div class="edit-ans-col">
+                            <div class="edit-ans"><span class="edit-span-active"></span> Confidence</div>
+                            <div class="edit-ans"><span></span> Fear</div>
+                            <div class="edit-ans"><span></span> Joy</div>
+                            <div class="edit-ans"><span></span> Curiosity</div>
+                            <div class="edit-ans"><span></span> Confusion</div>
+                            <input type="hidden" value="Confidence" id="dreamEmotion" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="edit-content" id="editSign">
+                    <div class="edit-ques-wrapper">
+                        <div class="edit-ques-txt">People</div>
+                        <div class="edit-tag-input">
+                            <input type="text" id="people" placeholder="+ Add people" />
+                            <div class="btn-tag">+</div>
+                        </div>
+                        <div class="edit-tag-flex">
+                            <!-- 
+                                <div class="edit-tag-tag"><img src="images/icons/xmark.png" />Larry</div>
+                                <div class="edit-tag-tag"><img src="images/icons/xmark.png" />Jack</div>
+                                <div class="edit-tag-tag"><img src="images/icons/xmark.png" />Jonathan</div>
+                                <div class="edit-tag-tag"><img src="images/icons/xmark.png" />Emelia</div>
+                            -->
+                            <input type="hidden" value="" id="dreamPeople" />
+                        </div>
+                    </div>
+                    <div class="edit-ques-wrapper">
+                        <div class="edit-ques-txt">Objects</div>
+                        <div class="edit-tag-input">
+                            <input type="text" id="objects" placeholder="+ Add objects" />
+                            <div class="btn-tag">+</div>
+                        </div>
+                        <div class="edit-tag-flex">
+                            <input type="hidden" value="" id="dreamObjects" />
+                        </div>
+                    </div>
+                </div>
+
+                <div style="height: 220px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-holder" id="analyticsHolder">
+        <div class="home-container width">
+            <div class="home-top">
+                <div class="home-title">Analytics</div>
+            </div>
+
+            <div class="ana-emp">
+                <div class="ana-emp-para">You must submit at least 3 dreams<br> to view your analytics.</div>
+                <div class="ana-emp-img">
+                    <img src="images/vectors/nodata.svg" />
+                </div>
+                <div onclick="changePage(2)" class="ana-emp-btn">Dream Journal</div>
+            </div>
+
+            <div class="ana-container">
+                <div class="ana-wrapper">
+                    <div class="ana-head">Dreams</div>
+                    <div class="ana-flex">
+                        <div class="ana-circ-container">
+                            <div class="ana-circ circ-fill" id="circLucid"></div>
+                            <div class="ana-circ circ-fill" id="circNormal"></div>
+                            <div class="ana-circ circ-fill" id="circNightmare"></div>
+                            <div class="ana-circ-mid"></div>
+                            <div class="ana-circ-content">
+                                <div class="ana-circ-head">26</div>
+                                <div class="ana-circ-txt">Dreams</div>
+                            </div>
+                        </div>
+                        <div class="ana-col">
+                            <div class="ana-section" style="border-left: 2px solid hsl(222, 100%, 38%);">
+                                <div class="ana-num">53%</div>
+                                <div class="ana-label">Lucid Dreams</div>
+                            </div>
+                            <div class="ana-section" style="border-left: 2px solid hsl(222, 100%, 58%);">
+                                <div class="ana-num">24%</div>
+                                <div class="ana-label">Normal Dreams</div>
+                            </div>
+                            <div class="ana-section" style="border-left: 2px solid hsl(222, 100%, 78%);">
+                                <div class="ana-num">23%</div>
+                                <div class="ana-label">Nightmares</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ana-low-flex">
+                    <div class="ana-low-col ana-left-col">
+                        <div class="ana-wrapper">
+                            <div class="ana-stat-head">Emotions</div>
+                            <div class="ana-list-ul" id="emotionsUl">
+                                <!-- 
+                                <div class="ana-list-li">
+                                    <div class="ana-list-label">Confidence</div>
+                                    <div class="ana-list-flex">
+                                        <div class="ana-list-fill"></div>
+                                        <div class="ana-list-num">21</div>
+                                    </div>
+                                </div>
+                                -->
+                            </div>
+                        </div>
+                        <div class="ana-wrapper">
+                            <div class="ana-stat-head">People</div>
+                            <div class="ana-list-ul" id="peopleUl">
+                                <!-- 
+                                    <div class="ana-list-li">
+                                        <div class="ana-list-label">Larry</div>
+                                        <div class="ana-list-flex">
+                                            <div class="ana-list-fill"></div>
+                                            <div class="ana-list-num">21</div>
+                                        </div>
+                                    </div>
+                                    -->
+                            </div>
+                        </div>
+                        <div class="ana-wrapper">
+                            <div class="ana-stat-head">Emotions</div>
+                            <div class="ana-list-ul">
+                                <div class="ana-list-li">
+                                    <div class="ana-list-label">Confidence</div>
+                                    <div class="ana-list-flex">
+                                        <div class="ana-list-fill"></div>
+                                        <div class="ana-list-num">21</div>
+                                    </div>
+                                </div>
+                                <div class="ana-list-li">
+                                    <div class="ana-list-label">Joy</div>
+                                    <div class="ana-list-flex">
+                                        <div class="ana-list-fill"></div>
+                                        <div class="ana-list-num">21</div>
+                                    </div>
+                                </div>
+                                <div class="ana-list-li">
+                                    <div class="ana-list-label">Fear</div>
+                                    <div class="ana-list-flex">
+                                        <div class="ana-list-fill"></div>
+                                        <div class="ana-list-num">21</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ana-wrapper">
+                            <div class="ana-stat-head">Emotions</div>
+                            <div class="ana-list-ul">
+                                <div class="ana-list-li">
+                                    <div class="ana-list-label">Confidence</div>
+                                    <div class="ana-list-flex">
+                                        <div class="ana-list-fill"></div>
+                                        <div class="ana-list-num">21</div>
+                                    </div>
+                                </div>
+                                <div class="ana-list-li">
+                                    <div class="ana-list-label">Joy</div>
+                                    <div class="ana-list-flex">
+                                        <div class="ana-list-fill"></div>
+                                        <div class="ana-list-num">21</div>
+                                    </div>
+                                </div>
+                                <div class="ana-list-li">
+                                    <div class="ana-list-label">Fear</div>
+                                    <div class="ana-list-flex">
+                                        <div class="ana-list-fill"></div>
+                                        <div class="ana-list-num">21</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ana-low-col ana-right-col">
+                        <div class="ana-wrapper">
+                            <div class="ana-stat-head">Recurring</div>
+                            <div class="ana-semi-out" id="recurringCircle">
+                                <div class="ana-semi-holder">
+                                    <div class="ana-semi-container">
+                                        <div class="ana-semi semi-fill"></div>
+                                        <div class="ana-semi semi-outline"></div>
+                                        <div class="ana-semi semi-mid"></div>
+                                    </div>
+                                </div>
+                                <div class="ana-stat-col">
+                                    <div class="ana-stat-icon">
+                                        <img src="images/icons/reverse.png" />
+                                    </div>
+                                    <div class="ana-stat-num">76%</div>
+                                </div>
+                            </div>
+                            <div class="ana-stat-flex">
+                                <div class="ana-stat-label">0%</div>
+                                <div class="ana-stat-label">100%</div>
+                            </div>
+                        </div>
+                        <div class="ana-wrapper">
+                            <div class="ana-stat-head">Vividness</div>
+                            <div class="ana-semi-out" id="vividCircle">
+                                <div class="ana-semi-holder">
+                                    <div class="ana-semi-container">
+                                        <div class="ana-semi semi-fill"></div>
+                                        <div class="ana-semi semi-outline"></div>
+                                        <div class="ana-semi semi-mid"></div>
+                                    </div>
+                                </div>
+                                <div class="ana-stat-col">
+                                    <div class="ana-stat-icon">
+                                        <img src="images/icons/eye.png" />
+                                    </div>
+                                    <div class="ana-stat-num">76%</div>
+                                </div>
+                            </div>
+                            <div class="ana-stat-flex">
+                                <div class="ana-stat-label">0%</div>
+                                <div class="ana-stat-label">100%</div>
+                            </div>
+                        </div>
+                        <div class="ana-wrapper">
+                            <div class="ana-stat-head">Lucidity</div>
+                            <div class="ana-semi-out" id="lucidCircle">
+                                <div class="ana-semi-holder">
+                                    <div class="ana-semi-container">
+                                        <div class="ana-semi semi-fill"></div>
+                                        <div class="ana-semi semi-outline"></div>
+                                        <div class="ana-semi semi-mid"></div>
+                                    </div>
+                                </div>
+                                <div class="ana-stat-col">
+                                    <div class="ana-stat-icon">
+                                        <img src="images/icons/moon.png" />
+                                    </div>
+                                    <div class="ana-stat-num">76%</div>
+                                </div>
+                            </div>
+                            <div class="ana-stat-flex">
+                                <div class="ana-stat-label">0%</div>
+                                <div class="ana-stat-label">100%</div>
+                            </div>
+                        </div>
+                        <div class="ana-wrapper">
+                            <div class="ana-stat-head">Quality</div>
+                            <div class="ana-semi-out">
+                                <div class="ana-semi-holder">
+                                    <div class="ana-semi-container">
+                                        <div class="ana-semi semi-fill"></div>
+                                        <div class="ana-semi semi-outline"></div>
+                                        <div class="ana-semi semi-mid"></div>
+                                    </div>
+                                </div>
+                                <div class="ana-stat-col">
+                                    <div class="ana-stat-icon">
+                                        <img src="images/icons/eye.png" />
+                                    </div>
+                                    <div class="ana-stat-num">76%</div>
+                                </div>
+                            </div>
+                            <div class="ana-stat-flex">
+                                <div class="ana-stat-label">0%</div>
+                                <div class="ana-stat-label">100%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-holder" id="profileHolder">
+        <div class="home-container width">
+            <div class="home-top">
+                <div class="home-title">Settings</div>
+            </div>
+
+            <div class="set-container">
+                <div class="set-ul">
+                    <a href="/login.html" class="set-li set-li-border" id="createAccountOption">
+                        <div class="set-icon">
+                            <img src="images/icons/plus.png" />
+                        </div>
+                        <div class="set-txt">Create an Account</div>
+                        <img src="images/icons/chevron2.png" class="set-chevron" />
+                    </a>
+                    <a href="/login.html?start=login" class="set-li set-li-border" id="loginOption">
+                        <div class="set-icon">
+                            <img src="images/icons/user.png" />
+                        </div>
+                        <div class="set-txt">Log in</div>
+                        <img src="images/icons/chevron2.png" class="set-chevron" />
+                    </a>
+                    <div class="set-li set-li-border" id="logoutOption">
+                        <div class="set-icon">
+                            <img src="images/icons/exit.png" />
+                        </div>
+                        <div class="set-txt">Log out</div>
+                        <img src="images/icons/chevron2.png" class="set-chevron" />
+                    </div>
+                    <div class="set-li" id="deleteOption">
+                        <div class="set-icon">
+                            <img src="images/icons/trash.png" />
+                        </div>
+                        <div class="set-txt">Delete Data</div>
+                        <img src="images/icons/chevron2.png" class="set-chevron" />
+                    </div>
+                </div>
+                <div class="set-ul">
+                    <div class="set-li set-li-border">
+                        <div class="set-icon">
+                            <img src="images/icons/info.png" />
+                        </div>
+                        <div class="set-txt">About</div>
+                        <img src="images/icons/chevron2.png" class="set-chevron" />
+                    </div>
+                    <div class="set-li set-li-border">
+                        <div class="set-icon">
+                            <img src="images/icons/privacy.png" />
+                        </div>
+                        <div class="set-txt">Privacy policy</div>
+                        <img src="images/icons/chevron2.png" class="set-chevron" />
+                    </div>
+                    <div class="set-li">
+                        <div class="set-icon">
+                            <img src="images/icons/at.png" />
+                        </div>
+                        <div class="set-txt">Terms of service</div>
+                        <img src="images/icons/chevron2.png" class="set-chevron" />
+                    </div>
+                </div>
+        
+                <div class="edit-cta-wrapper home-cta-wrapper" style="margin: 0;">
+                    <div class="edit-cta-vector">
+                        <img src="images/icons/padlock.png" />
+                    </div>
+                    <div class="edit-cta-title">Get unlimited access<br> to AI features</div>
+                    <div class="edit-cta-col">
+                        <div class="edit-cta-section">
+                            <div class="edit-cta-icon">
+                                <img src="images/icons/moon.png" />
+                            </div>
+                            <div class="edit-cta-txt">AI dream analysis & meaning</div>
+                        </div>
+        
+                        <div class="edit-cta-section">
+                            <div class="edit-cta-icon">
+                                <img src="images/icons/moon.png" />
+                            </div>
+                            <div class="edit-cta-txt">AI image generation for dreams</div>
+                        </div>
+        
+                        <div class="edit-cta-section">
+                            <div class="edit-cta-icon">
+                                <img src="images/icons/moon.png" />
+                            </div>
+                            <div class="edit-cta-txt">AI Q&A helper/chatbot</div>
+                        </div>
+        
+                        <div class="edit-cta-section">
+                            <div class="edit-cta-icon">
+                                <img src="images/icons/moon.png" />
+                            </div>
+                            <div class="edit-cta-txt">Dream journal voice recordings</div>
+                        </div>
+                    </div>
+                    <div class="btn-edit-cta">Start free trial <img src="images/icons/arrow.png" /></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-delete-modal all-modal" id="deleteDataModal">
+            <div class="book-delete-wrapper modal-wrapper">
+                <div class="book-delete-icon">
+                    <img src="images/icons/trash.png" />
+                </div>
+                <div class="book-delete-title">Delete Account</div>
+                <div class="book-delete-para">Are you sure you want to delete your data? This cannot be undone.</div>
+                <div class="book-delete-flex">
+                    <div class="btn-book-nodelete close-modal">No, keep it.</div>
+                    <div class="btn-book-delete-booking" id="deleteDataBtn">Yes, delete!</div>
+                </div>
+            </div>
         </div>
     </div>
 

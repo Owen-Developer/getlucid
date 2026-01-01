@@ -176,34 +176,65 @@ function getTime12(){
 const currentDate = getCurrentDate();
 const currentTime = getTime();
 
-let params = new URLSearchParams(window.location.search);
+function changePage(pageIdx){
+    document.querySelectorAll("div.home-bav-col").forEach((other) => {
+        other.querySelectorAll("img")[0].classList.remove("invisible");
+        other.querySelectorAll("img")[1].classList.add("invisible");
+        other.querySelector(".home-bav-txt").classList.remove("home-bav-active");
+    });
+    document.querySelectorAll("div.home-bav-icon")[pageIdx].querySelector("img").classList.add("invisible");
+    document.querySelectorAll("div.home-bav-icon")[pageIdx].querySelectorAll("img")[1].classList.remove("invisible");
+    document.querySelectorAll(".home-bav-txt")[pageIdx].classList.add("home-bav-active");
 
+    document.querySelectorAll(".page-holder").forEach(other => {
+        other.style.display = "none";
+    });
+    document.querySelectorAll(".page-holder")[pageIdx].style.display = "block";
+    window.scrollTo({
+        top: 0,
+    });
+}
+
+let params = new URLSearchParams(window.location.search);
 
 function createHtml(){
     let homeBav = document.createElement("div");
     homeBav.classList.add("home-bav");
     homeBav.innerHTML = `
-        <div class="home-bav">
-            <a href="index.html" class="home-bav-col">
-                <img src="images/icons/home.png" class="home-bav-icon" />
-                <div class="home-bav-txt">Home</div>
-            </a>
-            <a href="techniques.html" class="home-bav-col">
+        <div class="home-bav-col">
+            <div class="home-bav-icon">
+                <img src="images/icons/home.png" class="home-bav-icon invisible" />
+                <img src="images/icons/homeblue.png" class="home-bav-icon home-bav-active" />
+            </div>
+            <div class="home-bav-txt home-bav-active">Home</div>
+        </div>
+        <div class="home-bav-col">
+            <div class="home-bav-icon">
                 <img src="images/icons/bulb.png" class="home-bav-icon" />
-                <div class="home-bav-txt">Techniques</div>
-            </a>
-            <a href="journal.html" class="home-bav-col">
+                <img src="images/icons/bulbblue.png" class="home-bav-icon home-bav-active invisible" />
+            </div>
+            <div class="home-bav-txt">Techniques</div>
+        </div>
+        <div class="home-bav-col">
+            <div class="home-bav-icon">
                 <img src="images/icons/book.png" class="home-bav-icon" />
-                <div class="home-bav-txt">Journal</div>
-            </a>
-            <a href="analytics.html" class="home-bav-col">
+                <img src="images/icons/bookblue.png" class="home-bav-icon home-bav-active invisible" />
+            </div>
+            <div class="home-bav-txt">Journal</div>
+        </div>
+        <div class="home-bav-col">
+            <div class="home-bav-icon">
                 <img src="images/icons/chart.png" class="home-bav-icon" />
-                <div class="home-bav-txt">Analytics</div>
-            </a>
-            <a href="profile.html" class="home-bav-col">
+                <img src="images/icons/chartblue.png" class="home-bav-icon home-bav-active invisible" />
+            </div>
+            <div class="home-bav-txt">Analytics</div>
+        </div>
+        <div class="home-bav-col">
+            <div class="home-bav-icon">
                 <img src="images/icons/user.png" class="home-bav-icon" />
-                <div class="home-bav-txt">Profile</div>
-            </a>
+                <img src="images/icons/userblue.png" class="home-bav-icon home-bav-active invisible" />
+            </div>
+            <div class="home-bav-txt">Profile</div>
         </div>
     `;
 
@@ -223,9 +254,12 @@ function createHtml(){
 
     if(!document.querySelector(".login")){
         document.body.appendChild(homeBav);
-        document.querySelectorAll(".home-bav-icon")[activeIdx].classList.add("home-bav-active");
-        document.querySelectorAll(".home-bav-txt")[activeIdx].classList.add("home-bav-active");
-        document.querySelectorAll(".home-bav-icon")[activeIdx].src = document.querySelectorAll(".home-bav-icon")[activeIdx].src.slice(0, -4) + "blue" + document.querySelectorAll(".home-bav-icon")[activeIdx].src.slice(-4);
+
+        document.querySelectorAll(".home-bav-col").forEach((btn, idx) => {
+            btn.addEventListener("click", () => {
+                changePage(idx);
+            });
+        });
     }
 }
 createHtml();
@@ -261,119 +295,55 @@ async function getUserData(){
             localStorage.setItem("userId", userData.id);
         }
 
-        if(document.querySelector(".home")){
-            let greeting = "Good Morning";
-            if(Number(currentTime.split(":")[0]) >= 12){
-                greeting = "Good Afternoon";
-            } else if(Number(currentTime.split(":")[0]) >= 17){
-                greeting = "Good Evening";
-            }
-            document.querySelector(".home-title").innerHTML = greeting;
-            if(!localStorage.getItem("lastDream") || localStorage.getItem("lastDream") != currentDate){
-                document.querySelector(".home-thank").style.display = "none";
-                document.querySelector(".home-cre-card").style.display = "flex";
-            } else {
-                document.querySelector(".home-thank").style.display = "none";
-                document.querySelector(".home-cre-card").style.display = "none";
-            }
+        if(!document.querySelector(".login")){
 
-            document.querySelector(".btn-forgot").addEventListener("click", () => {
-                document.querySelector(".home-cre-card").style.opacity = "0";
-                setTimeout(() => {
-                    document.querySelector(".home-cre-card").style.display = "none";
-                    document.querySelector(".home-thank").style.display = "flex";
-                    setTimeout(() => {
-                        document.querySelector(".home-thank").style.opacity = "1";
-                        document.querySelector(".home-thank").style.pointerEvents = "auto";
-                        document.querySelector(".home-thank").style.transform = "scale(1)";
-                        setTimeout(() => {
-                            document.querySelector(".home-thank").style.opacity = "0";
-                            document.querySelector(".home-thank").style.pointerEvents = "none";
-                            document.querySelector(".home-thank").style.transform = "scale(0)";
-                            setTimeout(() => {
-                                document.querySelector(".home-thank").style.display = "none";
-                                document.querySelector(".home-cre-space").style.display = "block";
-                                setTimeout(() => {
-                                    document.querySelector(".home-cre-space").style.height = "0px";
-                                }, 20);
-                            }, 400);
-                        }, 1500);
-                    }, 50);
-                }, 300);
-            });
-        }
-
-        if(document.querySelector(".home") || document.querySelector(".techniques")){
-            async function openTechnique(idx){
-                const dataToSend = { idx: idx };
-                try {
-                    const response = await fetch(url + `/api/get-saved-techniques`, {
-                        method: 'POST',
-                        credentials: 'include',
-                        headers: {
-                            'Content-Type': 'application/json', 
-                        },
-                        body: JSON.stringify(dataToSend), 
-                    });
-
-                    if (!response.ok) {
-                        const errorData = await response.json();
-                        console.error('Error:', errorData.message);
-                        return;
-                    }
-
-                    const data = await response.json();
-                    if(data.status == "yes"){
-                        document.querySelector(".btn-det-top").classList.add("btn-det-top-active");
-                    } else {
-                        document.querySelector(".btn-det-top").classList.remove("btn-det-top-active");
-                    }
-                    let currentData = techData[idx];
-                    techIdx = idx;
-                    document.querySelector(".det-icon img").src = "images/" + currentData.icon;
-                    document.querySelector(".det-title").textContent = currentData.title;
-                    document.querySelector(".det-para").textContent = currentData.description;
-                    document.querySelectorAll(".det-info-diff span").forEach((circle, idx) => {
-                        circle.classList.remove("det-info-active")
-                        if(idx < currentData.difficulty) circle.classList.add("det-info-active");
-                    });
-                    document.querySelectorAll(".det-info-succ span").forEach((circle, idx) => {
-                        circle.classList.remove("det-info-active")
-                        if(idx < currentData.success) circle.classList.add("det-info-active");
-                    });
-                    document.querySelector(".det-txt").innerHTML = currentData.para;
-            
-                    document.querySelector(".det-container").style.opacity = "1";
-                    document.querySelector(".det-container").style.pointerEvents = "auto";
-                    document.querySelector(".det-container").style.right = "0";
-                } catch (error) {
-                    console.error('Error posting data:', error);
+            //////////////////////// HOME ////////////////////////
+                let greeting = "Good Morning";
+                if(Number(currentTime.split(":")[0]) >= 12){
+                    greeting = "Good Afternoon";
+                } else if(Number(currentTime.split(":")[0]) >= 17){
+                    greeting = "Good Evening";
                 }
-            }
-            document.querySelectorAll(".home-tech-arrow").forEach(arrow => {
-                arrow.addEventListener("click", () => {
-                    let idx = arrow.id.split("-")[1];
-                    openTechnique(idx);
+                document.querySelector(".home-title").innerHTML = greeting;
+                if(!localStorage.getItem("lastDream") || localStorage.getItem("lastDream") != currentDate){
+                    document.querySelector(".home-thank").style.display = "none";
+                    document.querySelector(".home-cre-card").style.display = "flex";
+                } else {
+                    document.querySelector(".home-thank").style.display = "none";
+                    document.querySelector(".home-cre-card").style.display = "none";
+                }
+    
+                document.querySelector(".btn-forgot").addEventListener("click", () => {
+                    document.querySelector(".home-cre-card").style.opacity = "0";
+                    setTimeout(() => {
+                        document.querySelector(".home-cre-card").style.display = "none";
+                        document.querySelector(".home-thank").style.display = "flex";
+                        setTimeout(() => {
+                            document.querySelector(".home-thank").style.opacity = "1";
+                            document.querySelector(".home-thank").style.pointerEvents = "auto";
+                            document.querySelector(".home-thank").style.transform = "scale(1)";
+                            setTimeout(() => {
+                                document.querySelector(".home-thank").style.opacity = "0";
+                                document.querySelector(".home-thank").style.pointerEvents = "none";
+                                document.querySelector(".home-thank").style.transform = "scale(0)";
+                                setTimeout(() => {
+                                    document.querySelector(".home-thank").style.display = "none";
+                                    document.querySelector(".home-cre-space").style.display = "block";
+                                    setTimeout(() => {
+                                        document.querySelector(".home-cre-space").style.height = "0px";
+                                    }, 20);
+                                }, 400);
+                            }, 1500);
+                        }, 50);
+                    }, 300);
                 });
-            });
-            document.querySelector(".det-back").addEventListener("click", () => {
-                document.querySelector(".det-container").style.opacity = "0";
-                document.querySelector(".det-container").style.pointerEvents = "none";
-                document.querySelector(".det-container").style.right = "-250px";
-            });
-            document.querySelector(".btn-det-top").addEventListener("click", () => {
-                async function saveTech(){
-                    let goal;
-                    if(document.querySelector(".btn-det-top").classList.contains("btn-det-top-active")){
-                        goal = "no";
-                        document.querySelector(".btn-det-top").classList.remove("btn-det-top-active");
-                    } else {
-                        goal = "yes";
-                        document.querySelector(".btn-det-top").classList.add("btn-det-top-active");
-                    }
-                    const dataToSend = { idx: techIdx, goal: goal };
+            //////////////////////////////////////////////////////
+    
+            //////////////////////// HOME & TECHNIQUES ////////////////////////
+                async function openTechnique(idx){
+                    const dataToSend = { idx: idx };
                     try {
-                        const response = await fetch(url + `/api/save-technique`, {
+                        const response = await fetch(url + `/api/get-saved-techniques`, {
                             method: 'POST',
                             credentials: 'include',
                             headers: {
@@ -381,157 +351,210 @@ async function getUserData(){
                             },
                             body: JSON.stringify(dataToSend), 
                         });
-
+    
                         if (!response.ok) {
                             const errorData = await response.json();
                             console.error('Error:', errorData.message);
                             return;
                         }
-
+    
                         const data = await response.json();
+                        if(data.status == "yes"){
+                            document.querySelector(".btn-det-top").classList.add("btn-det-top-active");
+                        } else {
+                            document.querySelector(".btn-det-top").classList.remove("btn-det-top-active");
+                        }
+                        let currentData = techData[idx];
+                        techIdx = idx;
+                        document.querySelector(".det-icon img").src = "images/" + currentData.icon;
+                        document.querySelector(".det-title").textContent = currentData.title;
+                        document.querySelector(".det-para").textContent = currentData.description;
+                        document.querySelectorAll(".det-info-diff span").forEach((circle, idx) => {
+                            circle.classList.remove("det-info-active")
+                            if(idx < currentData.difficulty) circle.classList.add("det-info-active");
+                        });
+                        document.querySelectorAll(".det-info-succ span").forEach((circle, idx) => {
+                            circle.classList.remove("det-info-active")
+                            if(idx < currentData.success) circle.classList.add("det-info-active");
+                        });
+                        document.querySelector(".det-txt").innerHTML = currentData.para;
+                
+                        document.querySelector(".det-container").style.opacity = "1";
+                        document.querySelector(".det-container").style.pointerEvents = "auto";
+                        document.querySelector(".det-container").style.right = "0";
                     } catch (error) {
                         console.error('Error posting data:', error);
                     }
                 }
-                saveTech();
-            });
-            document.querySelector(".btn-det").addEventListener("click", () => {
-                document.querySelector(".tut-container").style.opacity = "1";
-                document.querySelector(".tut-container").style.pointerEvents = "auto";
-            });
-
-            document.querySelector(".tut-back").addEventListener("click", () => {
-                document.querySelector(".tut-container").style.opacity = "0";
-                document.querySelector(".tut-container").style.pointerEvents = "none";
-            });
-            function changeTut(newIdx){
-                tutIdx = newIdx;
-                if(tutIdx == 5) tutIdx = 0;
-                document.querySelectorAll(".tut-img img, .tut-head, .tut-para").forEach(el => {
-                    el.classList.add("tut-inactive");
+                document.querySelectorAll(".home-tech-arrow").forEach(arrow => {
+                    arrow.addEventListener("click", () => {
+                        let idx = arrow.id.split("-")[1];
+                        openTechnique(idx);
+                    });
                 });
-                document.querySelectorAll(".tut-bar span").forEach(el => {
-                    el.classList.remove("tut-bar-active");
+                document.querySelector(".det-back").addEventListener("click", () => {
+                    document.querySelector(".det-container").style.opacity = "0";
+                    document.querySelector(".det-container").style.pointerEvents = "none";
+                    document.querySelector(".det-container").style.right = "-250px";
                 });
-
-                setTimeout(() => {
-                    document.querySelector(".tut-head").innerHTML = currentTut.headings[tutIdx];
-                    document.querySelector(".tut-para").innerHTML = currentTut.paras[tutIdx];
+                document.querySelector(".btn-det-top").addEventListener("click", () => {
+                    async function saveTech(){
+                        let goal;
+                        if(document.querySelector(".btn-det-top").classList.contains("btn-det-top-active")){
+                            goal = "no";
+                            document.querySelector(".btn-det-top").classList.remove("btn-det-top-active");
+                        } else {
+                            goal = "yes";
+                            document.querySelector(".btn-det-top").classList.add("btn-det-top-active");
+                        }
+                        const dataToSend = { idx: techIdx, goal: goal };
+                        try {
+                            const response = await fetch(url + `/api/save-technique`, {
+                                method: 'POST',
+                                credentials: 'include',
+                                headers: {
+                                    'Content-Type': 'application/json', 
+                                },
+                                body: JSON.stringify(dataToSend), 
+                            });
+    
+                            if (!response.ok) {
+                                const errorData = await response.json();
+                                console.error('Error:', errorData.message);
+                                return;
+                            }
+    
+                            const data = await response.json();
+                        } catch (error) {
+                            console.error('Error posting data:', error);
+                        }
+                    }
+                    saveTech();
+                });
+                document.querySelector(".btn-det").addEventListener("click", () => {
+                    document.querySelector(".tut-container").style.opacity = "1";
+                    document.querySelector(".tut-container").style.pointerEvents = "auto";
+                });
+    
+                document.querySelector(".tut-back").addEventListener("click", () => {
+                    document.querySelector(".tut-container").style.opacity = "0";
+                    document.querySelector(".tut-container").style.pointerEvents = "none";
+                });
+                function changeTut(newIdx){
+                    tutIdx = newIdx;
+                    if(tutIdx == 5) tutIdx = 0;
+                    document.querySelectorAll(".tut-img img, .tut-head, .tut-para").forEach(el => {
+                        el.classList.add("tut-inactive");
+                    });
+                    document.querySelectorAll(".tut-bar span").forEach(el => {
+                        el.classList.remove("tut-bar-active");
+                    });
+    
                     setTimeout(() => {
-                        //document.querySelectorAll(".tut-img img")[tutIdx].classList.remove("tut-inactive");
-                        document.querySelectorAll(".tut-bar span")[tutIdx].classList.add("tut-bar-active");
-                        document.querySelector(".tut-head").classList.remove("tut-inactive");
-                        document.querySelector(".tut-para").classList.remove("tut-inactive");
-                    }, 50);
-                }, 300);
-            }
-            document.querySelectorAll(".tut-bar span").forEach((circle, idx) => {
-                circle.addEventListener("click", () => {
-                    changeTut(idx);
+                        document.querySelector(".tut-head").innerHTML = currentTut.headings[tutIdx];
+                        document.querySelector(".tut-para").innerHTML = currentTut.paras[tutIdx];
+                        setTimeout(() => {
+                            //document.querySelectorAll(".tut-img img")[tutIdx].classList.remove("tut-inactive");
+                            document.querySelectorAll(".tut-bar span")[tutIdx].classList.add("tut-bar-active");
+                            document.querySelector(".tut-head").classList.remove("tut-inactive");
+                            document.querySelector(".tut-para").classList.remove("tut-inactive");
+                        }, 50);
+                    }, 300);
+                }
+                document.querySelectorAll(".tut-bar span").forEach((circle, idx) => {
+                    circle.addEventListener("click", () => {
+                        changeTut(idx);
+                    });
                 });
-            });
-            document.querySelector(".tut-forward").addEventListener("click", () => {
-                changeTut(tutIdx + 1);
-            });
-        }
-
-        if(document.querySelector(".journal")){
-            function updateEdits(reset, dream){
-                if(reset){
-                    document.querySelector(".btn-edit-save").classList.add("btn-inactive");
-                    document.getElementById("dreamDate").value = getCurrentDate();
-                    document.querySelectorAll(".edit-change-col").forEach((col, colIdx) => {
-                        col.querySelector(".edit-change-num").textContent = currentDate.split("/")[colIdx];
-                        if(col.querySelector(".edit-change-num").textContent.length == 4) col.querySelector(".edit-change-num").textContent = col.querySelector(".edit-change-num").textContent.slice(2);
-                        document.getElementById("dreamDate").value = currentDate;
-                        document.querySelector(".edit-date-txt").textContent = document.querySelectorAll(".edit-change-num")[0].textContent + " " + months[Number(document.querySelectorAll(".edit-change-num")[1].textContent - 1)] + " 20" + document.querySelectorAll(".edit-change-num")[2].textContent;
-                    });
-                    document.getElementById("dreamPara").value = "";
-                    document.getElementById("dreamTitle").value = "";
-                    document.getElementById("dreamType").value = "Lucid Dream";
-                    document.querySelectorAll(".edit-ans-col").forEach(col => {
-                        col.querySelectorAll(".edit-ans span").forEach((span, idx) => {
-                            span.classList.remove("edit-span-active");
-                            if(idx == 0) span.classList.add("edit-span-active");
-                        });
-                    });
-                    document.getElementById("vivid").value = "3";
-                    document.getElementById("length").value = "3";
-                    document.getElementById("sleep").value = "3";
-                    document.querySelectorAll(".edit-yn").forEach((btn, idx) => {
-                        btn.classList.remove("edit-yn-active");
-                        if(idx == 0) btn.classList.add("edit-yn-active");
-                    });
-                    document.querySelectorAll(".edit-tag-flex").forEach(flex => {
-                        flex.style.marginTop = "0px";
-                        flex.querySelectorAll(".edit-tag-tag").forEach(tag => {
-                            flex.removeChild(tag);
-                        });
-                    });
-                    document.getElementById("dreamPeople").value = "";
-                    document.getElementById("dreamObjects").value = "";
-                    document.querySelectorAll(".edit-toggle-option")[0].click();
-                } else {
-                    document.querySelector(".btn-edit-save").classList.remove("btn-inactive");
-                    document.getElementById("idInput").value = dream.id;
-                    document.getElementById("dreamDate").value = dream.full_date;
-                    document.querySelectorAll(".edit-change-col").forEach((col, colIdx) => {
-                        col.querySelector(".edit-change-num").textContent = document.getElementById("dreamDate").value.split("/")[colIdx];
-                        if(col.querySelector(".edit-change-num").textContent.length == 4) col.querySelector(".edit-change-num").textContent = col.querySelector(".edit-change-num").textContent.slice(2);
-                        document.querySelector(".edit-date-txt").textContent = document.querySelectorAll(".edit-change-num")[0].textContent + " " + months[Number(document.querySelectorAll(".edit-change-num")[1].textContent - 1)] + " 20" + document.querySelectorAll(".edit-change-num")[2].textContent;
-                    });
-                    document.getElementById("dreamPara").value = dream.para;
-                    document.getElementById("dreamTitle").value = dream.title;
-                    document.getElementById("dreamType").value = dream.dream_type;
-                    document.querySelectorAll(".edit-ans-col").forEach(col => {
-                        col.querySelectorAll(".edit-ans").forEach((ans, idx) => {
-                            ans.querySelector("span").classList.remove("edit-span-active");
-                            if(ans.innerHTML.slice(ans.innerHTML.lastIndexOf(">") + 2) == dream.dream_type || ans.innerHTML.slice(ans.innerHTML.lastIndexOf(">") + 2) == dream.dream_emotion){
-                                ans.querySelector("span").classList.add("edit-span-active");
-                            } 
-                        });
-                    });
-                    document.getElementById("vivid").value = dream.dream_vivid;
-                    document.getElementById("length").value = dream.dream_length;
-                    document.getElementById("sleep").value = dream.dream_quality;
-                    document.querySelectorAll(".edit-yn").forEach((btn, idx) => {
-                        btn.classList.remove("edit-yn-active");
-                        if(idx == 0 && dream.dream_recurring == "no") btn.classList.add("edit-yn-active");
-                        if(idx == 1 && dream.dream_recurring == "yes") btn.classList.add("edit-yn-active");
-                    });
-                    document.querySelectorAll(".edit-tag-flex").forEach(flex => {
-                        flex.style.marginTop = "0px";
-                        flex.querySelectorAll(".edit-tag-tag").forEach(tag => {
-                            flex.removeChild(tag);
-                        });
-                    });
-                    document.getElementById("dreamPeople").value = dream.dream_people;
-                    document.getElementById("dreamObjects").value = dream.dream_objects;
-                    let signs = [dream.dream_people, dream.dream_objects];
-                    signs.forEach((sign, idx) => {
-                        sign.split(",,").forEach(str => {
-                            if(str != ""){
-                                let newTag = document.createElement("div");
-                                newTag.classList.add("edit-tag-tag");
-                                newTag.innerHTML = `<img src="images/icons/xmark.png" />${str}`;
-                                document.querySelectorAll(".edit-tag-flex")[idx].appendChild(newTag);
-                                document.querySelectorAll(".edit-tag-flex")[idx].style.marginTop = "20px";
+                document.querySelector(".tut-forward").addEventListener("click", () => {
+                    changeTut(tutIdx + 1);
+                });
+            //////////////////////////////////////////////////////////////////
     
-                                let newValue = "";
-                                document.querySelectorAll(".edit-tag-flex")[idx].querySelectorAll(".edit-tag-tag").forEach((tag, tagIdx) => {
-                                    if(newValue == ""){
-                                        newValue = tag.innerHTML.slice(tag.innerHTML.lastIndexOf(">") + 1);
-                                    } else {
-                                        newValue += ",," + tag.innerHTML.slice(tag.innerHTML.lastIndexOf(">") + 1);
-                                    }
-                                });
-                                document.querySelectorAll(".edit-tag-flex")[idx].querySelector("input").value = newValue;
+            //////////////////////// JOURNAL ////////////////////////
+                function updateEdits(reset, dream){
+                    if(reset){
+                        document.querySelector(".btn-edit-save").classList.add("btn-inactive");
+                        document.getElementById("dreamDate").value = getCurrentDate();
+                        document.querySelectorAll(".edit-change-col").forEach((col, colIdx) => {
+                            col.querySelector(".edit-change-num").textContent = currentDate.split("/")[colIdx];
+                            if(col.querySelector(".edit-change-num").textContent.slice(0, 1) == "0") col.querySelector(".edit-change-num").textContent = col.querySelector(".edit-change-num").textContent.slice(1);
+                            if(col.querySelector(".edit-change-num").textContent.length == 4) col.querySelector(".edit-change-num").textContent = col.querySelector(".edit-change-num").textContent.slice(2);
+                            document.getElementById("dreamDate").value = currentDate;
+                            document.querySelector(".edit-date-txt").textContent = document.querySelectorAll(".edit-change-num")[0].textContent + " " + months[Number(document.querySelectorAll(".edit-change-num")[1].textContent - 1)] + " 20" + document.querySelectorAll(".edit-change-num")[2].textContent;
+                        });
+                        document.getElementById("dreamPara").value = "";
+                        document.getElementById("dreamTitle").value = "";
+                        document.getElementById("dreamType").value = "Lucid Dream";
+                        document.querySelectorAll(".edit-ans-col").forEach(col => {
+                            col.querySelectorAll(".edit-ans span").forEach((span, idx) => {
+                                span.classList.remove("edit-span-active");
+                                if(idx == 0) span.classList.add("edit-span-active");
+                            });
+                        });
+                        document.getElementById("vivid").value = "3";
+                        document.getElementById("length").value = "3";
+                        document.getElementById("sleep").value = "3";
+                        document.querySelectorAll(".edit-yn").forEach((btn, idx) => {
+                            btn.classList.remove("edit-yn-active");
+                            if(idx == 0) btn.classList.add("edit-yn-active");
+                        });
+                        document.querySelectorAll(".edit-tag-flex").forEach(flex => {
+                            flex.style.marginTop = "0px";
+                            flex.querySelectorAll(".edit-tag-tag").forEach(tag => {
+                                flex.removeChild(tag);
+                            });
+                        });
+                        document.getElementById("dreamPeople").value = "";
+                        document.getElementById("dreamObjects").value = "";
+                        document.querySelectorAll(".edit-toggle-option")[0].click();
+                    } else {
+                        document.querySelector(".btn-edit-save").classList.remove("btn-inactive");
+                        document.getElementById("idInput").value = dream.id;
+                        document.getElementById("dreamDate").value = dream.full_date;
+                        document.querySelectorAll(".edit-change-col").forEach((col, colIdx) => {
+                            col.querySelector(".edit-change-num").textContent = document.getElementById("dreamDate").value.split("/")[colIdx];
+                            if(col.querySelector(".edit-change-num").textContent.slice(0, 1) == "0") col.querySelector(".edit-change-num").textContent = col.querySelector(".edit-change-num").textContent.slice(1);
+                            if(col.querySelector(".edit-change-num").textContent.length == 4) col.querySelector(".edit-change-num").textContent = col.querySelector(".edit-change-num").textContent.slice(2);
+                            document.querySelector(".edit-date-txt").textContent = document.querySelectorAll(".edit-change-num")[0].textContent + " " + months[Number(document.querySelectorAll(".edit-change-num")[1].textContent - 1)] + " 20" + document.querySelectorAll(".edit-change-num")[2].textContent;
+                        });
+                        document.getElementById("dreamPara").value = dream.para;
+                        document.getElementById("dreamTitle").value = dream.title;
+                        document.getElementById("dreamType").value = dream.dream_type;
+                        document.querySelectorAll(".edit-ans-col").forEach(col => {
+                            col.querySelectorAll(".edit-ans").forEach((ans, idx) => {
+                                ans.querySelector("span").classList.remove("edit-span-active");
+                                if(ans.innerHTML.slice(ans.innerHTML.lastIndexOf(">") + 2) == dream.dream_type || ans.innerHTML.slice(ans.innerHTML.lastIndexOf(">") + 2) == dream.dream_emotion){
+                                    ans.querySelector("span").classList.add("edit-span-active");
+                                } 
+                            });
+                        });
+                        document.getElementById("vivid").value = dream.dream_vivid;
+                        document.getElementById("length").value = dream.dream_length;
+                        document.getElementById("sleep").value = dream.dream_quality;
+                        document.querySelectorAll(".edit-yn").forEach((btn, idx) => {
+                            btn.classList.remove("edit-yn-active");
+                            if(idx == 0 && dream.dream_recurring == "no") btn.classList.add("edit-yn-active");
+                            if(idx == 1 && dream.dream_recurring == "yes") btn.classList.add("edit-yn-active");
+                        });
+                        document.querySelectorAll(".edit-tag-flex").forEach(flex => {
+                            flex.style.marginTop = "0px";
+                            flex.querySelectorAll(".edit-tag-tag").forEach(tag => {
+                                flex.removeChild(tag);
+                            });
+                        });
+                        document.getElementById("dreamPeople").value = dream.dream_people;
+                        document.getElementById("dreamObjects").value = dream.dream_objects;
+                        let signs = [dream.dream_people, dream.dream_objects];
+                        signs.forEach((sign, idx) => {
+                            sign.split(",,").forEach(str => {
+                                if(str != ""){
+                                    let newTag = document.createElement("div");
+                                    newTag.classList.add("edit-tag-tag");
+                                    newTag.innerHTML = `<img src="images/icons/xmark.png" />${str}`;
+                                    document.querySelectorAll(".edit-tag-flex")[idx].appendChild(newTag);
+                                    document.querySelectorAll(".edit-tag-flex")[idx].style.marginTop = "20px";
     
-                                newTag.querySelector("img").addEventListener("click", () => {
-                                    document.querySelectorAll(".edit-tag-flex")[idx].removeChild(newTag);
-                                    if(document.querySelectorAll(".edit-tag-flex")[idx].querySelectorAll(".edit-tag-tag").length == 0){
-                                        document.querySelectorAll(".edit-tag-flex")[idx].style.marginTop = "0px";
-                                    }
                                     let newValue = "";
                                     document.querySelectorAll(".edit-tag-flex")[idx].querySelectorAll(".edit-tag-tag").forEach((tag, tagIdx) => {
                                         if(newValue == ""){
@@ -541,303 +564,454 @@ async function getUserData(){
                                         }
                                     });
                                     document.querySelectorAll(".edit-tag-flex")[idx].querySelector("input").value = newValue;
-                                });
-                            }
+    
+                                    newTag.querySelector("img").addEventListener("click", () => {
+                                        document.querySelectorAll(".edit-tag-flex")[idx].removeChild(newTag);
+                                        if(document.querySelectorAll(".edit-tag-flex")[idx].querySelectorAll(".edit-tag-tag").length == 0){
+                                            document.querySelectorAll(".edit-tag-flex")[idx].style.marginTop = "0px";
+                                        }
+                                        let newValue = "";
+                                        document.querySelectorAll(".edit-tag-flex")[idx].querySelectorAll(".edit-tag-tag").forEach((tag, tagIdx) => {
+                                            if(newValue == ""){
+                                                newValue = tag.innerHTML.slice(tag.innerHTML.lastIndexOf(">") + 1);
+                                            } else {
+                                                newValue += ",," + tag.innerHTML.slice(tag.innerHTML.lastIndexOf(">") + 1);
+                                            }
+                                        });
+                                        document.querySelectorAll(".edit-tag-flex")[idx].querySelector("input").value = newValue;
+                                    });
+                                }
+                            });
                         });
-                    });
-                    document.querySelectorAll(".edit-toggle-option")[0].click();
+                        document.querySelectorAll(".edit-toggle-option")[0].click();
+                    }
                 }
-            }
-
-            function showDreams(array){
-                document.querySelector(".dre-col").innerHTML = "";
-                document.querySelectorAll(".dre-filter span").forEach(span => span.classList.remove("dre-filter-active"));
-                array.forEach(dream => {
-                    let newWrapper = document.createElement("div");
-                    newWrapper.id = dream.dream_type + "-" + dream.dream_recurring;
-                    newWrapper.classList.add("dre-wrapper");
-                    let dreActiveStr = "";
-                    if(dream.is_saved == "yes") dreActiveStr = "dre-save-active";
-                    let dreamPara = dream.para;
-                    if(dreamPara.length > 120) dreamPara = dreamPara.slice(0, 117) + "..."; 
-                    newWrapper.innerHTML = `
-                        <div class="dre-edit">
-                            <img src="images/icons/edit.png" />
-                        </div>
-                        <div class="dre-save ${dreActiveStr}">
-                            <img src="images/icons/save.png" />
-                        </div>
-
-                        <div class="dre-date">${dream.full_date}, ${dream.full_time}</div>
-                        <div class="dre-head">${dream.title}</div>
-                        <div class="dre-tag">${dream.dream_emotion}</div>
-                        <div class="dre-txt">${dreamPara}</div>
-                    `;
-                    document.querySelector(".dre-col").prepend(newWrapper);
-
-                    newWrapper.addEventListener("click", () => {
-                        let newModal = document.createElement("div");
-                        newModal.classList.add("dre-modal");
-                        newModal.innerHTML = `
-                            <div class="dre-wrapper">
-                                <img src="images/icons/xmark.png" class="dre-xmark" />
-
-                                <div class="dre-date">${dream.full_date}, ${dream.full_time}</div>
-                                <div class="dre-head">${dream.title}</div>
-                                <div class="dre-tag">${dream.dream_emotion}</div>
-                                <div class="dre-txt">${dream.para}</div>
+    
+                function showDreams(array){
+                    document.querySelector(".dre-col").innerHTML = "";
+                    document.querySelectorAll(".dre-filter span").forEach(span => span.classList.remove("dre-filter-active"));
+                    array.forEach(dream => {
+                        let newWrapper = document.createElement("div");
+                        newWrapper.id = dream.dream_type + "-" + dream.dream_recurring;
+                        newWrapper.classList.add("dre-wrapper");
+                        let dreActiveStr = "";
+                        if(dream.is_saved == "yes") dreActiveStr = "dre-save-active";
+                        let dreamPara = dream.para;
+                        if(dreamPara.length > 120) dreamPara = dreamPara.slice(0, 117) + "..."; 
+                        newWrapper.innerHTML = `
+                            <div class="dre-edit">
+                                <img src="images/icons/edit.png" />
                             </div>
+                            <div class="dre-save ${dreActiveStr}">
+                                <img src="images/icons/save.png" />
+                            </div>
+    
+                            <div class="dre-date">${dream.full_date}, ${dream.full_time}</div>
+                            <div class="dre-head">${dream.title}</div>
+                            <div class="dre-tag">${dream.dream_emotion}</div>
+                            <div class="dre-txt">${dreamPara}</div>
                         `;
-                        document.body.appendChild(newModal);
-                        setTimeout(() => {
-                            newModal.style.opacity = "1";
-                        }, 50);
-                        
-                        newModal.querySelector(".dre-xmark").addEventListener("click", () => {
-                            newModal.style.opacity = "0";
-                            newModal.style.pointerEvents = "none";
-                        });
-
-                        newModal.addEventListener("click", (e) => {
-                            if(!newModal.querySelector(".dre-wrapper").contains(e.target)){
+                        document.querySelector(".dre-col").prepend(newWrapper);
+    
+                        newWrapper.addEventListener("click", () => {
+                            let newModal = document.createElement("div");
+                            newModal.classList.add("dre-modal");
+                            newModal.innerHTML = `
+                                <div class="dre-wrapper">
+                                    <img src="images/icons/xmark.png" class="dre-xmark" />
+    
+                                    <div class="dre-date">${dream.full_date}, ${dream.full_time}</div>
+                                    <div class="dre-head">${dream.title}</div>
+                                    <div class="dre-tag">${dream.dream_emotion}</div>
+                                    <div class="dre-txt">${dream.para}</div>
+                                </div>
+                            `;
+                            document.body.appendChild(newModal);
+                            setTimeout(() => {
+                                newModal.style.opacity = "1";
+                            }, 50);
+                            
+                            newModal.querySelector(".dre-xmark").addEventListener("click", () => {
                                 newModal.style.opacity = "0";
                                 newModal.style.pointerEvents = "none";
-                            } 
-                        });
-                    });
-
-                    newWrapper.querySelector(".dre-save").addEventListener("click", (e) => {
-                        e.stopPropagation();
-                        let goal;
-                        if(newWrapper.querySelector(".dre-save").classList.contains("dre-save-active")){
-                            goal = "no";
-                            newWrapper.querySelector(".dre-save").classList.remove("dre-save-active");
-                        } else {
-                            goal = "yes";
-                            newWrapper.querySelector(".dre-save").classList.add("dre-save-active");
-                        }
-
-                        async function bookDream(){
-                            const dataToSend = { goal: goal, id: dream.id };
-                            try {
-                                const response = await fetch(url + `/api/book-dream`, {
-                                    method: 'POST',
-                                    credentials: 'include',
-                                    headers: {
-                                        'Content-Type': 'application/json', 
-                                    },
-                                    body: JSON.stringify(dataToSend), 
-                                });
-
-                                if (!response.ok) {
-                                    const errorData = await response.json();
-                                    console.error('Error:', errorData.message);
-                                    return;
-                                }
-
-                                const data = await response.json();
-                            } catch (error) {
-                                console.error('Error posting data:', error);
-                            }
-                        }
-                        bookDream();
-                    });
-
-                    newWrapper.querySelector(".dre-edit").addEventListener("click", (e) => {
-                        e.stopPropagation();
-                        dreamEditing = true;
-
-                        updateEdits(false, dream);
-                        document.querySelector(".edit-container").style.opacity = "1";
-                        document.querySelector(".edit-container").style.pointerEvents = "auto";
-                        document.querySelector(".edit-container").style.right = "0px";
-                    });
-                });
-            }
-
-            async function getDreams(){
-                try {
-                    const response = await fetch(`${url}/api/get-dreams`, {
-                        method: 'GET',
-                        credentials: 'include'
-                    });
-                    const data = await response.json(); 
-                    if(data.message == "success"){
-                        let dreams = data.dreams;
-                        if(dreams.length == 0){
-                            document.querySelector(".jur-container").style.display = "flex";
-                            document.querySelector(".dre-btn").style.display = "none";
-                            setTimeout(() => {
-                                document.querySelector(".home-container").style.opacity = "1";
-                            }, 50);
-                        } else {
-                            showDreams(dreams);
-
-                            document.querySelector(".dre-btn").style.display = "flex";
-                            document.querySelector(".dre-container").style.display = "flex";
-                            setTimeout(() => {
-                                document.querySelector(".home-container").style.opacity = "1";
-                            }, 50);
-                        }
-                    }
-                } catch (error) {
-                    console.error('Error fetching data:', error);
-                }
-            }
-            getDreams();
-
-            document.querySelector(".btn-jur").addEventListener("click", () => {
-                dreamEditing = false;
-                document.querySelector(".edit-container").style.opacity = "1";
-                document.querySelector(".edit-container").style.pointerEvents = "auto";
-                document.querySelector(".edit-container").style.right = "0px";
-            });
-            document.querySelector(".dre-btn").addEventListener("click", () => {
-                dreamEditing = false;
-                document.querySelector(".edit-container").style.opacity = "1";
-                document.querySelector(".edit-container").style.pointerEvents = "auto";
-                document.querySelector(".edit-container").style.right = "0px";
-            });
-            document.querySelectorAll(".dre-filter span").forEach((span, idx) => {
-                span.addEventListener("click", () => {
-                    if(span.classList.contains("dre-filter-active")){
-                        span.classList.remove("dre-filter-active");
-                        document.querySelectorAll(".dre-wrapper").forEach(wrapper => {
-                            wrapper.style.display = "flex";
-                        });
-                    } else {
-                        document.querySelectorAll(".dre-filter span").forEach(other => {
-                            other.classList.remove("dre-filter-active");
-                        });
-                        span.classList.add("dre-filter-active");
+                            });
     
-                        document.querySelectorAll(".dre-wrapper").forEach(wrapper => {
-                            wrapper.style.display = "flex";
+                            newModal.addEventListener("click", (e) => {
+                                if(!newModal.querySelector(".dre-wrapper").contains(e.target)){
+                                    newModal.style.opacity = "0";
+                                    newModal.style.pointerEvents = "none";
+                                } 
+                            });
+                        });
     
-                            if(idx == 0){
-                                if(wrapper.id.split("-")[0] != "Lucid Dream") wrapper.style.display = "none";
-                            } else if(idx == 1){
-                                if(wrapper.id.split("-")[0] != "Normal Dream") wrapper.style.display = "none";
-                            } else if(idx == 2){
-                                if(wrapper.id.split("-")[0] != "Nightmare") wrapper.style.display = "none";
-                            } else if(idx == 3){
-                                if(!wrapper.querySelector(".dre-save").classList.contains("dre-save-active")) wrapper.style.display = "none";
-                            } else if(idx == 4){
-                                if(wrapper.id.split("-")[1] != "yes") wrapper.style.display = "none";
-                            }
-                        });
-                    }
-                });
-            });
-
-            document.querySelector(".edit-back").addEventListener("click", () => {
-                updateEdits(true);
-                document.querySelector(".edit-container").style.opacity = "0";
-                document.querySelector(".edit-container").style.pointerEvents = "none";
-                document.querySelector(".edit-container").style.right = "-255px";
-            });
-            document.querySelectorAll(".edit-toggle-option").forEach((option, idx) => {
-                option.addEventListener("click", () => {
-                    let toggleOptions = ["left", "mid", "right"];
-                    document.querySelector(".edit-toggle span").classList.remove("edit-toggle-left");
-                    document.querySelector(".edit-toggle span").classList.remove("edit-toggle-mid");
-                    document.querySelector(".edit-toggle span").classList.remove("edit-toggle-right");
-                    document.querySelector(".edit-toggle span").classList.add("edit-toggle-" + toggleOptions[idx]);
-                    document.querySelectorAll(".edit-content").forEach(cont => {
-                        cont.style.opacity = "0";
-                        setTimeout(() => {
-                            cont.style.display = "none";
-                            document.querySelectorAll(".edit-content")[idx].style.display = "flex";
-                            setTimeout(() => {
-                                document.querySelectorAll(".edit-content")[idx].style.opacity = "1";
-                            }, 30);
-                        }, 300);
-                    });
-                });
-            });
-            document.querySelectorAll(".edit-ans-col").forEach(col => {
-                col.querySelectorAll(".edit-ans").forEach(ans => {
-                    ans.addEventListener("click", () => {
-                        col.querySelectorAll(".edit-ans").forEach(other => {
-                            other.querySelector("span").classList.remove("edit-span-active");
-                        });
-                        ans.querySelector("span").classList.add("edit-span-active");
-                        col.querySelector("input").value = ans.innerHTML.slice(ans.innerHTML.lastIndexOf(">") + 2);
-                    });
-                });
-            });
-            document.querySelector(".edit-date-wrapper").addEventListener("click", (e) => {
-                if(!document.querySelector(".edit-change").contains(e.target)){
-                    if(document.querySelector(".edit-date-chev").style.transform == "rotate(-90deg)"){
-                        document.querySelector(".edit-change").style.opacity = "0";
-                        document.querySelector(".edit-change").style.pointerEvents = "none";
-                        document.querySelector(".edit-date-chev").style.transform = "rotate(90deg)";
-                    } else {
-                        document.querySelector(".edit-change").style.opacity = "1";
-                        document.querySelector(".edit-change").style.pointerEvents = "auto";
-                        document.querySelector(".edit-date-chev").style.transform = "rotate(-90deg)";
-                    }
-                }
-            });
-            document.getElementById("dreamDate").value = getCurrentDate();
-            document.querySelectorAll(".edit-change-col").forEach((col, colIdx) => {
-                col.querySelector(".edit-change-num").textContent = currentDate.split("/")[colIdx];
-                if(col.querySelector(".edit-change-num").textContent.length == 4) col.querySelector(".edit-change-num").textContent = col.querySelector(".edit-change-num").textContent.slice(2);
-                document.getElementById("dreamDate").value = currentDate;
-                document.querySelector(".edit-date-txt").textContent = document.querySelectorAll(".edit-change-num")[0].textContent + " " + months[Number(document.querySelectorAll(".edit-change-num")[1].textContent - 1)] + " 20" + document.querySelectorAll(".edit-change-num")[2].textContent;
-                col.querySelectorAll(".edit-change-chev").forEach((chev, idx) => {
-                    chev.addEventListener("click", () => {
-                        if(idx == 0){
-                            col.querySelector(".edit-change-num").textContent = Number(col.querySelector(".edit-change-num").textContent) + 1;
-                            if(Number(col.querySelector(".edit-change-num").textContent) > 31 && colIdx == 0) col.querySelector(".edit-change-num").textContent = "1";
-                            if(Number(col.querySelector(".edit-change-num").textContent) > 12 && colIdx == 1) col.querySelector(".edit-change-num").textContent = "1";
-                        } else {
-                            col.querySelector(".edit-change-num").textContent = Number(col.querySelector(".edit-change-num").textContent) - 1;
-                            if(Number(col.querySelector(".edit-change-num").textContent) < 1 && colIdx == 0) col.querySelector(".edit-change-num").textContent = "31";
-                            if(Number(col.querySelector(".edit-change-num").textContent) < 1 && colIdx == 1) col.querySelector(".edit-change-num").textContent = "12";
-                            if(Number(col.querySelector(".edit-change-num").textContent) < 10 && colIdx == 2) col.querySelector(".edit-change-num").textContent = "10";
-                        }
-                        document.getElementById("dreamDate").value = document.querySelectorAll(".edit-change-num")[0].textContent.padStart(2, "0") + "/" + document.querySelectorAll(".edit-change-num")[1].textContent.padStart(2, "0") + "/20" + document.querySelectorAll(".edit-change-num")[2].textContent;
-                    });
-                });
-            });
-            document.querySelector(".btn-change-save").addEventListener("click", () => {
-                document.querySelector(".edit-change").style.opacity = "0";
-                document.querySelector(".edit-change").style.pointerEvents = "none";
-                document.querySelector(".edit-date-chev").style.transform = "rotate(90deg)";
-
-                document.querySelector(".edit-date-txt").textContent = document.querySelectorAll(".edit-change-num")[0].textContent + " " + months[Number(document.querySelectorAll(".edit-change-num")[1].textContent - 1)] + " 20" + document.querySelectorAll(".edit-change-num")[2].textContent;
-            });
-            document.querySelector(".btn-change-cancel").addEventListener("click", () => {
-                document.querySelector(".edit-change").style.opacity = "0";
-                document.querySelector(".edit-change").style.pointerEvents = "none";
-                document.querySelector(".edit-date-chev").style.transform = "rotate(90deg)";
-            });
-            document.querySelectorAll(".btn-tag").forEach((btn, idx) => {
-                btn.addEventListener("click", () => {
-                    let input = document.querySelectorAll(".edit-tag-input input")[idx];
-                    if(input.value != ""){
-                        let newTag = document.createElement("div");
-                        newTag.classList.add("edit-tag-tag");
-                        newTag.innerHTML = `<img src="images/icons/xmark.png" />${input.value}`;
-                        document.querySelectorAll(".edit-tag-flex")[idx].appendChild(newTag);
-                        document.querySelectorAll(".edit-tag-flex")[idx].style.marginTop = "20px";
-
-                        let newValue = "";
-                        document.querySelectorAll(".edit-tag-flex")[idx].querySelectorAll(".edit-tag-tag").forEach((tag, tagIdx) => {
-                            if(newValue == ""){
-                                newValue = tag.innerHTML.slice(tag.innerHTML.lastIndexOf(">") + 1);
+                        newWrapper.querySelector(".dre-save").addEventListener("click", (e) => {
+                            e.stopPropagation();
+                            let goal;
+                            if(newWrapper.querySelector(".dre-save").classList.contains("dre-save-active")){
+                                goal = "no";
+                                newWrapper.querySelector(".dre-save").classList.remove("dre-save-active");
                             } else {
-                                newValue += ",," + tag.innerHTML.slice(tag.innerHTML.lastIndexOf(">") + 1);
+                                goal = "yes";
+                                newWrapper.querySelector(".dre-save").classList.add("dre-save-active");
                             }
+    
+                            async function bookDream(){
+                                const dataToSend = { goal: goal, id: dream.id };
+                                try {
+                                    const response = await fetch(url + `/api/book-dream`, {
+                                        method: 'POST',
+                                        credentials: 'include',
+                                        headers: {
+                                            'Content-Type': 'application/json', 
+                                        },
+                                        body: JSON.stringify(dataToSend), 
+                                    });
+    
+                                    if (!response.ok) {
+                                        const errorData = await response.json();
+                                        console.error('Error:', errorData.message);
+                                        return;
+                                    }
+    
+                                    const data = await response.json();
+                                } catch (error) {
+                                    console.error('Error posting data:', error);
+                                }
+                            }
+                            bookDream();
                         });
-                        document.querySelectorAll(".edit-tag-flex")[idx].querySelector("input").value = newValue;
-
-                        newTag.querySelector("img").addEventListener("click", () => {
-                            document.querySelectorAll(".edit-tag-flex")[idx].removeChild(newTag);
-                            if(document.querySelectorAll(".edit-tag-flex")[idx].querySelectorAll(".edit-tag-tag").length == 0){
-                                document.querySelectorAll(".edit-tag-flex")[idx].style.marginTop = "0px";
+    
+                        newWrapper.querySelector(".dre-edit").addEventListener("click", (e) => {
+                            e.stopPropagation();
+                            dreamEditing = true;
+    
+                            updateEdits(false, dream);
+                            document.querySelector(".edit-container").style.opacity = "1";
+                            document.querySelector(".edit-container").style.pointerEvents = "auto";
+                            document.querySelector(".edit-container").style.right = "0px";
+                        });
+                    });
+                }
+    
+                async function getDreams(){
+                    try {
+                        const response = await fetch(`${url}/api/get-dreams`, {
+                            method: 'GET',
+                            credentials: 'include'
+                        });
+                        const data = await response.json(); 
+                        if(data.message == "success"){
+                            let dreams = data.dreams;
+                            if(dreams.length == 0){
+                                document.querySelector(".jur-container").style.display = "flex";
+                                document.querySelector(".dre-btn").style.display = "none";
+                                setTimeout(() => {
+                                    document.querySelector(".home-container").style.opacity = "1";
+                                }, 50);
+                            } else {
+                                showDreams(dreams);
+    
+                                document.querySelector(".dre-btn").style.display = "flex";
+                                document.querySelector(".dre-container").style.display = "flex";
+                                setTimeout(() => {
+                                    document.querySelector(".home-container").style.opacity = "1";
+                                }, 50);
                             }
+    
+                            // Analytics logic
+                            if(dreams.length < 3){
+                                document.querySelector(".ana-emp").style.display = "flex";
+                                document.querySelector(".ana-container").style.display = "none";
+                                setTimeout(() => {
+                                    document.querySelector(".home-container").style.opacity = "1";
+                                }, 50);
+                            } else {
+                                document.querySelector(".ana-container").style.display = "flex";
+                                document.querySelector(".ana-emp").style.display = "none";
+                                document.querySelector(".ana-circ-head").textContent = dreams.length;
+                                document.querySelectorAll(".ana-num").forEach((num, idx) => {
+                                    let lucidDreams = dreams.filter(dream => dream.dream_type.toLowerCase() == "lucid dream");
+                                    let normalDreams = dreams.filter(dream => dream.dream_type.toLowerCase() == "normal dream");
+                                    let nightmares = dreams.filter(dream => dream.dream_type.toLowerCase() == "nightmare");
+                                    if(idx == 0) num.textContent = Math.round((lucidDreams.length / dreams.length) * 100) + "%";
+                                    if(idx == 1) num.textContent = Math.round((normalDreams.length / dreams.length) * 100) + "%";
+                                    if(idx == 2) num.textContent = Math.round((nightmares.length / dreams.length) * 100) + "%";
+                                    let lucidAngle = 360 * (lucidDreams.length / dreams.length);
+                                    let normalAngle = 360 * (normalDreams.length / dreams.length);
+                                    let nightmareAngle = 360 - lucidAngle - normalAngle;
+                                    document.getElementById("circLucid").style.background = `
+                                        conic-gradient(
+                                            from 0deg,
+                                            hsl(222, 100%, 38%) 0deg ${lucidAngle}deg,
+                                            transparent ${lucidAngle + 1}deg 360deg 
+                                        )
+                                    `;
+                                    document.getElementById("circNormal").style.background = `
+                                        conic-gradient(
+                                            from 0deg,
+                                            hsl(222, 100%, 58%) 0deg ${normalAngle}deg,
+                                            transparent ${normalAngle + 1}deg 360deg 
+                                        )
+                                    `;
+                                    document.getElementById("circNormal").style.transform = `rotate(${lucidAngle}deg)`;
+                                    document.getElementById("circNightmare").style.background = `
+                                        conic-gradient(
+                                            from 0deg,
+                                            hsl(222, 100%, 78%) 0deg ${nightmareAngle}deg,
+                                            transparent ${nightmareAngle + 1}deg 360deg 
+                                        )
+                                    `;
+                                });
+                                function makeBarChart(array, ul){
+                                    array.forEach((num, idx) => {
+                                        let rank = 0;
+                                        array.forEach((other, otherIdx) => {
+                                            if(otherIdx != idx && num[1] < other[1]){
+                                                rank++;
+                                            }
+                                        });
+                                        num[2] = rank;
+                                    });
+                                    let newEmotions = [];
+                                    for(let i = 0; i < array.length; i++){
+                                        array.forEach(emotion => {
+                                            if(emotion[2] == i){
+                                                newEmotions.push(emotion);
+                                            }
+                                        });
+                                    }
+                                    newEmotions.forEach((emotion, idx) => {
+                                        if(idx < 3){
+                                            let newLi = document.createElement("div");
+                                            newLi.classList.add("ana-list-li");
+                                            newLi.innerHTML = `
+                                                <div class="ana-list-label">${emotion[0]}</div>
+                                                <div class="ana-list-flex">
+                                                    <div class="ana-list-fill"></div>
+                                                    <div class="ana-list-num">${emotion[1]}</div>
+                                                </div>
+                                            `;
+                                            ul.appendChild(newLi);
+                                        }
+                                    });
+                                }
+                                function fillCircles(){
+                                    document.querySelectorAll(".ana-semi-out").forEach((cont, idx) => {
+                                        let deg = Math.round(180 * circles[idx]);
+                                        cont.querySelector(".semi-fill").style.background = `
+                                            conic-gradient(
+                                                from 90deg,
+                                                var(--primary) 0deg ${deg}deg, 
+                                                transparent ${deg + 1}deg 360deg 
+                                            )
+                                        `;
+                                        cont.querySelector(".ana-stat-num").textContent = Math.round(circles[idx] * 100) + "%";
+                                    });
+                                }
+                                let emotions = [];
+                                let people = [];
+                                let circles = [0, 0, 0, 0]; // recurring, vivid, lucidity, 
+                                dreams.forEach(dream => {
+                                    let newEmotion = [dream.dream_emotion, 0, 0];
+                                    let isValid = true;
+                                    emotions.forEach(emotion => {
+                                        if(emotion[0] == dream.dream_emotion){
+                                            isValid = false;
+                                        }
+                                    });
+                                    if(isValid){
+                                        emotions.push(newEmotion);
+                                    }
+                                    emotions.forEach((emotion, idx) => {
+                                        if(dream.dream_emotion == emotion[0]){
+                                            emotion[1]++;
+                                        }
+                                    });  
+    
+                                    if(dream.dream_people != ""){
+                                        dream.dream_people.split(",,").forEach(person => {
+                                            let newPerson = [person, 0, 0];
+                                            let isPersonValid = true;
+                                            people.forEach(existing => {
+                                                if(existing[0] == dream.person){
+                                                    isPersonValid = false;
+                                                }
+                                            });
+                                            if(isPersonValid){
+                                                people.push(newPerson);
+                                            }
+                                        });
+                                    }
+                                    people.forEach(existing => {
+                                        dream.dream_people.split(",,").forEach(person => {
+                                            if(existing[0] == person){
+                                                existing[1]++;
+                                            }
+                                        });
+                                    });
+    
+                                    if(dream.dream_recurring == "yes") circles[0]++;
+                                    circles[1] += (dream.dream_vivid / 5);
+                                    if(dream.dream_type == "Lucid Dream") circles[2]++;
+                                    circles[3] += (dream.dream_quality / 5);
+                                });
+                                circles[0] = (circles[0] / dreams.length);
+                                circles[1] = (circles[1] / dreams.length);
+                                circles[2] = (circles[2] / dreams.length);
+                                circles[3] = (circles[3] / dreams.length);
+                                makeBarChart(emotions, document.getElementById("emotionsUl"));
+                                makeBarChart(people, document.getElementById("peopleUl"));
+                                fillCircles();
+                               
+                                setTimeout(() => {
+                                    document.querySelector(".home-container").style.opacity = "1";
+                                }, 50);
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Error fetching data:', error);
+                    }
+                }
+                getDreams();
+    
+                document.querySelector(".btn-jur").addEventListener("click", () => {
+                    dreamEditing = false;
+                    document.querySelector(".edit-container").style.opacity = "1";
+                    document.querySelector(".edit-container").style.pointerEvents = "auto";
+                    document.querySelector(".edit-container").style.right = "0px";
+                });
+                document.querySelector(".dre-btn").addEventListener("click", () => {
+                    dreamEditing = false;
+                    document.querySelector(".edit-container").style.opacity = "1";
+                    document.querySelector(".edit-container").style.pointerEvents = "auto";
+                    document.querySelector(".edit-container").style.right = "0px";
+                });
+                document.querySelectorAll(".dre-filter span").forEach((span, idx) => {
+                    span.addEventListener("click", () => {
+                        if(span.classList.contains("dre-filter-active")){
+                            span.classList.remove("dre-filter-active");
+                            document.querySelectorAll(".dre-wrapper").forEach(wrapper => {
+                                wrapper.style.display = "flex";
+                            });
+                        } else {
+                            document.querySelectorAll(".dre-filter span").forEach(other => {
+                                other.classList.remove("dre-filter-active");
+                            });
+                            span.classList.add("dre-filter-active");
+    
+                            document.querySelectorAll(".dre-wrapper").forEach(wrapper => {
+                                wrapper.style.display = "flex";
+    
+                                if(idx == 0){
+                                    if(wrapper.id.split("-")[0] != "Lucid Dream") wrapper.style.display = "none";
+                                } else if(idx == 1){
+                                    if(wrapper.id.split("-")[0] != "Normal Dream") wrapper.style.display = "none";
+                                } else if(idx == 2){
+                                    if(wrapper.id.split("-")[0] != "Nightmare") wrapper.style.display = "none";
+                                } else if(idx == 3){
+                                    if(!wrapper.querySelector(".dre-save").classList.contains("dre-save-active")) wrapper.style.display = "none";
+                                } else if(idx == 4){
+                                    if(wrapper.id.split("-")[1] != "yes") wrapper.style.display = "none";
+                                }
+                            });
+                        }
+                    });
+                });
+    
+                document.querySelector(".edit-back").addEventListener("click", () => {
+                    updateEdits(true);
+                    document.querySelector(".edit-container").style.opacity = "0";
+                    document.querySelector(".edit-container").style.pointerEvents = "none";
+                    document.querySelector(".edit-container").style.right = "-255px";
+                });
+                document.querySelectorAll(".edit-toggle-option").forEach((option, idx) => {
+                    option.addEventListener("click", () => {
+                        let toggleOptions = ["left", "mid", "right"];
+                        document.querySelector(".edit-toggle span").classList.remove("edit-toggle-left");
+                        document.querySelector(".edit-toggle span").classList.remove("edit-toggle-mid");
+                        document.querySelector(".edit-toggle span").classList.remove("edit-toggle-right");
+                        document.querySelector(".edit-toggle span").classList.add("edit-toggle-" + toggleOptions[idx]);
+                        document.querySelectorAll(".edit-content").forEach(cont => {
+                            cont.style.opacity = "0";
+                            setTimeout(() => {
+                                cont.style.display = "none";
+                                document.querySelectorAll(".edit-content")[idx].style.display = "flex";
+                                setTimeout(() => {
+                                    document.querySelectorAll(".edit-content")[idx].style.opacity = "1";
+                                }, 30);
+                            }, 300);
+                        });
+                    });
+                });
+                document.querySelectorAll(".edit-ans-col").forEach(col => {
+                    col.querySelectorAll(".edit-ans").forEach(ans => {
+                        ans.addEventListener("click", () => {
+                            col.querySelectorAll(".edit-ans").forEach(other => {
+                                other.querySelector("span").classList.remove("edit-span-active");
+                            });
+                            ans.querySelector("span").classList.add("edit-span-active");
+                            col.querySelector("input").value = ans.innerHTML.slice(ans.innerHTML.lastIndexOf(">") + 2);
+                        });
+                    });
+                });
+                document.querySelector(".edit-date-wrapper").addEventListener("click", (e) => {
+                    if(!document.querySelector(".edit-change").contains(e.target)){
+                        if(document.querySelector(".edit-date-chev").style.transform == "rotate(-90deg)"){
+                            document.querySelector(".edit-change").style.opacity = "0";
+                            document.querySelector(".edit-change").style.pointerEvents = "none";
+                            document.querySelector(".edit-date-chev").style.transform = "rotate(90deg)";
+                        } else {
+                            document.querySelector(".edit-change").style.opacity = "1";
+                            document.querySelector(".edit-change").style.pointerEvents = "auto";
+                            document.querySelector(".edit-date-chev").style.transform = "rotate(-90deg)";
+                        }
+                    }
+                });
+                document.getElementById("dreamDate").value = getCurrentDate();
+                document.querySelectorAll(".edit-change-col").forEach((col, colIdx) => {
+                    col.querySelector(".edit-change-num").textContent = currentDate.split("/")[colIdx];
+                    if(col.querySelector(".edit-change-num").textContent.slice(0, 1) == "0") col.querySelector(".edit-change-num").textContent = col.querySelector(".edit-change-num").textContent.slice(1);
+                    if(col.querySelector(".edit-change-num").textContent.length == 4) col.querySelector(".edit-change-num").textContent = col.querySelector(".edit-change-num").textContent.slice(2);
+                    document.getElementById("dreamDate").value = currentDate;
+                    document.querySelector(".edit-date-txt").textContent = document.querySelectorAll(".edit-change-num")[0].textContent + " " + months[Number(document.querySelectorAll(".edit-change-num")[1].textContent - 1)] + " 20" + document.querySelectorAll(".edit-change-num")[2].textContent;
+                    col.querySelectorAll(".edit-change-chev").forEach((chev, idx) => {
+                        chev.addEventListener("click", () => {
+                            if(idx == 0){
+                                col.querySelector(".edit-change-num").textContent = Number(col.querySelector(".edit-change-num").textContent) + 1;
+                                if(Number(col.querySelector(".edit-change-num").textContent) > 31 && colIdx == 0) col.querySelector(".edit-change-num").textContent = "1";
+                                if(Number(col.querySelector(".edit-change-num").textContent) > 12 && colIdx == 1) col.querySelector(".edit-change-num").textContent = "1";
+                            } else {
+                                col.querySelector(".edit-change-num").textContent = Number(col.querySelector(".edit-change-num").textContent) - 1;
+                                if(Number(col.querySelector(".edit-change-num").textContent) < 1 && colIdx == 0) col.querySelector(".edit-change-num").textContent = "31";
+                                if(Number(col.querySelector(".edit-change-num").textContent) < 1 && colIdx == 1) col.querySelector(".edit-change-num").textContent = "12";
+                                if(Number(col.querySelector(".edit-change-num").textContent) < 10 && colIdx == 2) col.querySelector(".edit-change-num").textContent = "10";
+                            }
+                            document.getElementById("dreamDate").value = document.querySelectorAll(".edit-change-num")[0].textContent.padStart(2, "0") + "/" + document.querySelectorAll(".edit-change-num")[1].textContent.padStart(2, "0") + "/20" + document.querySelectorAll(".edit-change-num")[2].textContent;
+                        });
+                    });
+                });
+                document.querySelector(".btn-change-save").addEventListener("click", () => {
+                    document.querySelector(".edit-change").style.opacity = "0";
+                    document.querySelector(".edit-change").style.pointerEvents = "none";
+                    document.querySelector(".edit-date-chev").style.transform = "rotate(90deg)";
+    
+                    document.querySelector(".edit-date-txt").textContent = document.querySelectorAll(".edit-change-num")[0].textContent + " " + months[Number(document.querySelectorAll(".edit-change-num")[1].textContent - 1)] + " 20" + document.querySelectorAll(".edit-change-num")[2].textContent;
+                });
+                document.querySelector(".btn-change-cancel").addEventListener("click", () => {
+                    document.querySelector(".edit-change").style.opacity = "0";
+                    document.querySelector(".edit-change").style.pointerEvents = "none";
+                    document.querySelector(".edit-date-chev").style.transform = "rotate(90deg)";
+                });
+                document.querySelectorAll(".btn-tag").forEach((btn, idx) => {
+                    btn.addEventListener("click", () => {
+                        let input = document.querySelectorAll(".edit-tag-input input")[idx];
+                        if(input.value != ""){
+                            let newTag = document.createElement("div");
+                            newTag.classList.add("edit-tag-tag");
+                            newTag.innerHTML = `<img src="images/icons/xmark.png" />${input.value}`;
+                            document.querySelectorAll(".edit-tag-flex")[idx].appendChild(newTag);
+                            document.querySelectorAll(".edit-tag-flex")[idx].style.marginTop = "20px";
+    
                             let newValue = "";
                             document.querySelectorAll(".edit-tag-flex")[idx].querySelectorAll(".edit-tag-tag").forEach((tag, tagIdx) => {
                                 if(newValue == ""){
@@ -847,323 +1021,180 @@ async function getUserData(){
                                 }
                             });
                             document.querySelectorAll(".edit-tag-flex")[idx].querySelector("input").value = newValue;
-                        });
-                        input.value = "";
-                    }
-                });
-            });
-            document.querySelectorAll(".edit-yn-flex").forEach(flex => {
-                flex.querySelectorAll(".edit-yn").forEach(el => {
-                    el.addEventListener("click", () => {
-                        flex.querySelectorAll(".edit-yn").forEach(other => {
-                            other.classList.remove("edit-yn-active");
-                        });
-                        el.classList.add("edit-yn-active");
+    
+                            newTag.querySelector("img").addEventListener("click", () => {
+                                document.querySelectorAll(".edit-tag-flex")[idx].removeChild(newTag);
+                                if(document.querySelectorAll(".edit-tag-flex")[idx].querySelectorAll(".edit-tag-tag").length == 0){
+                                    document.querySelectorAll(".edit-tag-flex")[idx].style.marginTop = "0px";
+                                }
+                                let newValue = "";
+                                document.querySelectorAll(".edit-tag-flex")[idx].querySelectorAll(".edit-tag-tag").forEach((tag, tagIdx) => {
+                                    if(newValue == ""){
+                                        newValue = tag.innerHTML.slice(tag.innerHTML.lastIndexOf(">") + 1);
+                                    } else {
+                                        newValue += ",," + tag.innerHTML.slice(tag.innerHTML.lastIndexOf(">") + 1);
+                                    }
+                                });
+                                document.querySelectorAll(".edit-tag-flex")[idx].querySelector("input").value = newValue;
+                            });
+                            input.value = "";
+                        }
                     });
                 });
-            });
-
-            function checkStory(){
-                if(document.getElementById("dreamTitle").value != "" && document.getElementById("dreamPara").value != ""){
-                    document.querySelector(".btn-edit-save").classList.remove("btn-inactive");
+                document.querySelectorAll(".edit-yn-flex").forEach(flex => {
+                    flex.querySelectorAll(".edit-yn").forEach(el => {
+                        el.addEventListener("click", () => {
+                            flex.querySelectorAll(".edit-yn").forEach(other => {
+                                other.classList.remove("edit-yn-active");
+                            });
+                            el.classList.add("edit-yn-active");
+                        });
+                    });
+                });
+    
+                function checkStory(){
+                    if(document.getElementById("dreamTitle").value != "" && document.getElementById("dreamPara").value != ""){
+                        document.querySelector(".btn-edit-save").classList.remove("btn-inactive");
+                    } else {
+                        document.querySelector(".btn-edit-save").classList.add("btn-inactive");
+                    }
+                }
+                document.getElementById("dreamTitle").addEventListener("input", checkStory);
+                document.getElementById("dreamPara").addEventListener("input", checkStory);
+                document.querySelector(".btn-edit-save").addEventListener("click", () => {
+                    async function saveDream(){
+                        const dreamData = {
+                            "title": document.getElementById("dreamTitle").value,
+                            "para": document.getElementById("dreamPara").value,
+                            "date": document.getElementById("dreamDate").value,
+                            "type": document.getElementById("dreamType").value,
+                            "vivid": document.getElementById("vivid").value,
+                            "length": document.getElementById("length").value,
+                            "sleep": document.getElementById("sleep").value,
+                            "recurring": document.querySelector(".edit-yn-active").id.split("-")[1],
+                            "emotion": document.getElementById("dreamEmotion").value,
+                            "people": document.getElementById("dreamPeople").value,
+                            "objects": document.getElementById("dreamObjects").value
+                        }
+                        if(dreamEditing) dreamData.id = document.getElementById("idInput").value;
+                        const dataToSend = { dreamData: dreamData };
+                        try {
+                            const response = await fetch(url + `/api/save-dream`, {
+                                method: 'POST',
+                                credentials: 'include',
+                                headers: {
+                                    'Content-Type': 'application/json', 
+                                },
+                                body: JSON.stringify(dataToSend), 
+                            });
+    
+                            if (!response.ok) {
+                                const errorData = await response.json();
+                                console.error('Error:', errorData.message);
+                                return;
+                            }
+    
+                            const data = await response.json();
+                            if(data.message == "success"){
+                                if(!dreamEditing){
+                                    localStorage.setItem("lastDream", dreamData.date);
+                                }
+    
+                                showDreams(data.dreams);
+    
+                                document.querySelector(".jur-container").style.display = "none";
+                                document.querySelector(".dre-btn").style.display = "flex";
+                                document.querySelector(".dre-container").style.display = "flex";
+                                document.querySelector(".edit-container").style.opacity = "0";
+                                document.querySelector(".edit-container").style.pointerEvents = "none";
+                                document.querySelector(".edit-container").style.right = "-250px";
+                                updateEdits(true);
+                            }
+                        } catch (error) {
+                            console.error('Error posting data:', error);
+                        }
+                    }
+    
+                    saveDream();
+                });
+            ////////////////////////////////////////////////////////
+    
+            //////////////////////// ANALYTICS ////////////////////////
+                // most of logic is in journal > getDreams()
+    
+                document.querySelectorAll(".ana-semi-holder").forEach(holder => {
+                    holder.addEventListener("wheel", (e) => {
+                        e.preventDefault();
+                    });
+                    holder.addEventListener('scroll', () => {
+                        holder.scrollTop = 0;
+                        holder.scrollLeft = 0;
+                    });
+                });
+    
+                document.getElementById("analyticsHolder").classList.add("page-holder-inactive");
+                setTimeout(() => {
+                    document.querySelectorAll(".ana-left-col .ana-wrapper").forEach(wrapper => {
+                        wrapper.style.height = document.querySelectorAll(".ana-wrapper")[5].clientHeight + "px";
+                        console.log(document.querySelectorAll(".ana-wrapper")[5].clientHeight + "px");
+                    });
+                    document.getElementById("analyticsHolder").classList.remove("page-holder-inactive");
+                }, 1000);
+            ///////////////////////////////////////////////////////////
+    
+            //////////////////////// PROFILE ////////////////////////
+                if(userData.name == "n/a"){
+                    document.getElementById("logoutOption").style.display = "none";
                 } else {
-                    document.querySelector(".btn-edit-save").classList.add("btn-inactive");
+                    document.getElementById("createAccountOption").style.display = "none";
+                    document.getElementById("loginOption").style.display = "none";
                 }
-            }
-            document.getElementById("dreamTitle").addEventListener("input", checkStory);
-            document.getElementById("dreamPara").addEventListener("input", checkStory);
-            document.querySelector(".btn-edit-save").addEventListener("click", () => {
-                async function saveDream(){
-                    const dreamData = {
-                        "title": document.getElementById("dreamTitle").value,
-                        "para": document.getElementById("dreamPara").value,
-                        "date": document.getElementById("dreamDate").value,
-                        "type": document.getElementById("dreamType").value,
-                        "vivid": document.getElementById("vivid").value,
-                        "length": document.getElementById("length").value,
-                        "sleep": document.getElementById("sleep").value,
-                        "recurring": document.querySelector(".edit-yn-active").id.split("-")[1],
-                        "emotion": document.getElementById("dreamEmotion").value,
-                        "people": document.getElementById("dreamPeople").value,
-                        "objects": document.getElementById("dreamObjects").value
-                    }
-                    if(dreamEditing) dreamData.id = document.getElementById("idInput").value;
-                    const dataToSend = { dreamData: dreamData };
-                    try {
-                        const response = await fetch(url + `/api/save-dream`, {
-                            method: 'POST',
-                            credentials: 'include',
-                            headers: {
-                                'Content-Type': 'application/json', 
-                            },
-                            body: JSON.stringify(dataToSend), 
-                        });
-
-                        if (!response.ok) {
-                            const errorData = await response.json();
-                            console.error('Error:', errorData.message);
-                            return;
-                        }
-
-                        const data = await response.json();
-                        if(data.message == "success"){
-                            if(!dreamEditing){
-                                localStorage.setItem("lastDream", dreamData.date);
-                            }
-
-                            showDreams(data.dreams);
-
-                            document.querySelector(".jur-container").style.display = "none";
-                            document.querySelector(".dre-btn").style.display = "flex";
-                            document.querySelector(".dre-container").style.display = "flex";
-                            document.querySelector(".edit-container").style.opacity = "0";
-                            document.querySelector(".edit-container").style.pointerEvents = "none";
-                            document.querySelector(".edit-container").style.right = "-250px";
-                            updateEdits(true);
-                        }
-                    } catch (error) {
-                        console.error('Error posting data:', error);
-                    }
-                }
-
-                saveDream();
-            });
-        }
-
-        if(document.querySelector(".analytics")){
-            async function getDreams(){
-                try {
-                    const response = await fetch(`${url}/api/get-dreams`, {
-                        method: 'GET',
-                        credentials: 'include'
-                    });
-                    const data = await response.json(); 
-                    if(data.message == "success"){
-                        let dreams = data.dreams;
-                        if(dreams.length < 3){
-                            document.querySelector(".ana-emp").style.display = "flex";
-                            document.querySelector(".ana-container").style.display = "none";
-                            setTimeout(() => {
-                                document.querySelector(".home-container").style.opacity = "1";
-                            }, 50);
-                        } else {
-                            document.querySelector(".ana-container").style.display = "flex";
-                            document.querySelector(".ana-emp").style.display = "none";
-                            document.querySelector(".ana-circ-head").textContent = dreams.length;
-                            document.querySelectorAll(".ana-num").forEach((num, idx) => {
-                                let lucidDreams = dreams.filter(dream => dream.dream_type.toLowerCase() == "lucid dream");
-                                let normalDreams = dreams.filter(dream => dream.dream_type.toLowerCase() == "normal dream");
-                                let nightmares = dreams.filter(dream => dream.dream_type.toLowerCase() == "nightmare");
-                                if(idx == 0) num.textContent = Math.round((lucidDreams.length / dreams.length) * 100) + "%";
-                                if(idx == 1) num.textContent = Math.round((normalDreams.length / dreams.length) * 100) + "%";
-                                if(idx == 2) num.textContent = Math.round((nightmares.length / dreams.length) * 100) + "%";
-                                let lucidAngle = 360 * (lucidDreams.length / dreams.length);
-                                let normalAngle = 360 * (normalDreams.length / dreams.length);
-                                let nightmareAngle = 360 - lucidAngle - normalAngle;
-                                document.getElementById("circLucid").style.background = `
-                                    conic-gradient(
-                                        from 0deg,
-                                        hsl(222, 100%, 38%) 0deg ${lucidAngle}deg,
-                                        transparent ${lucidAngle + 1}deg 360deg 
-                                    )
-                                `;
-                                document.getElementById("circNormal").style.background = `
-                                    conic-gradient(
-                                        from 0deg,
-                                        hsl(222, 100%, 58%) 0deg ${normalAngle}deg,
-                                        transparent ${normalAngle + 1}deg 360deg 
-                                    )
-                                `;
-                                document.getElementById("circNormal").style.transform = `rotate(${lucidAngle}deg)`;
-                                document.getElementById("circNightmare").style.background = `
-                                    conic-gradient(
-                                        from 0deg,
-                                        hsl(222, 100%, 78%) 0deg ${nightmareAngle}deg,
-                                        transparent ${nightmareAngle + 1}deg 360deg 
-                                    )
-                                `;
+    
+                document.getElementById("logoutOption").addEventListener("click", () => {
+                    async function logout(){
+                        try {
+                            const response = await fetch(`${url}/api/logout`, {
+                                method: 'GET',
+                                credentials: 'include'
                             });
-                            function makeBarChart(array, ul){
-                                array.forEach((num, idx) => {
-                                    let rank = 0;
-                                    array.forEach((other, otherIdx) => {
-                                        if(otherIdx != idx && num[1] < other[1]){
-                                            rank++;
-                                        }
-                                    });
-                                    num[2] = rank;
-                                });
-                                let newEmotions = [];
-                                for(let i = 0; i < array.length; i++){
-                                    array.forEach(emotion => {
-                                        if(emotion[2] == i){
-                                            newEmotions.push(emotion);
-                                        }
-                                    });
-                                }
-                                newEmotions.forEach((emotion, idx) => {
-                                    if(idx < 3){
-                                        let newLi = document.createElement("div");
-                                        newLi.classList.add("ana-list-li");
-                                        newLi.innerHTML = `
-                                            <div class="ana-list-label">${emotion[0]}</div>
-                                            <div class="ana-list-flex">
-                                                <div class="ana-list-fill"></div>
-                                                <div class="ana-list-num">${emotion[1]}</div>
-                                            </div>
-                                        `;
-                                        ul.appendChild(newLi);
-                                    }
-                                });
+                            const data = await response.json(); 
+                            if(data.message == "success"){
+                                localStorage.clear();
+                                window.location.href = "/login.html?start=login";
                             }
-                            function fillCircles(){
-                                document.querySelectorAll(".ana-semi-out").forEach((cont, idx) => {
-                                    let deg = Math.round(180 * circles[idx]);
-                                    cont.querySelector(".semi-fill").style.background = `
-                                        conic-gradient(
-                                            from 90deg,
-                                            var(--primary) 0deg ${deg}deg, 
-                                            transparent ${deg + 1}deg 360deg 
-                                        )
-                                    `;
-                                    cont.querySelector(".ana-stat-num").textContent = Math.round(circles[idx] * 100) + "%";
-                                });
-                            }
-                            let emotions = [];
-                            let people = [];
-                            let circles = [0, 0, 0, 0]; // recurring, vivid, lucidity, 
-                            dreams.forEach(dream => {
-                                let newEmotion = [dream.dream_emotion, 0, 0];
-                                let isValid = true;
-                                emotions.forEach(emotion => {
-                                    if(emotion[0] == dream.dream_emotion){
-                                        isValid = false;
-                                    }
-                                });
-                                if(isValid){
-                                    emotions.push(newEmotion);
-                                }
-                                emotions.forEach((emotion, idx) => {
-                                    if(dream.dream_emotion == emotion[0]){
-                                        emotion[1]++;
-                                    }
-                                });  
-
-                                if(dream.dream_people != ""){
-                                    dream.dream_people.split(",,").forEach(person => {
-                                        let newPerson = [person, 0, 0];
-                                        let isPersonValid = true;
-                                        people.forEach(existing => {
-                                            if(existing[0] == dream.person){
-                                                isPersonValid = false;
-                                            }
-                                        });
-                                        if(isPersonValid){
-                                            people.push(newPerson);
-                                        }
-                                    });
-                                }
-                                people.forEach(existing => {
-                                    dream.dream_people.split(",,").forEach(person => {
-                                        if(existing[0] == person){
-                                            existing[1]++;
-                                        }
-                                    });
-                                });
-
-                                if(dream.dream_recurring == "yes") circles[0]++;
-                                circles[1] += (dream.dream_vivid / 5);
-                                if(dream.dream_type == "Lucid Dream") circles[2]++;
-                                circles[3] += (dream.dream_quality / 5);
+                        } catch (error) {
+                            console.error('Error fetching data:', error);
+                        }
+                    }
+                    logout();
+                });
+    
+                document.getElementById("deleteOption").addEventListener("click", () => {
+                    document.getElementById("deleteDataModal").style.opacity = "1";
+                    document.getElementById("deleteDataModal").style.pointerEvents = "auto";
+                });
+    
+                document.getElementById("deleteDataBtn").addEventListener("click", () => {
+                    async function deleteData(){
+                        try {
+                            const response = await fetch(`${url}/api/delete-data`, {
+                                method: 'GET',
+                                credentials: 'include'
                             });
-                            circles[0] = (circles[0] / dreams.length);
-                            circles[1] = (circles[1] / dreams.length);
-                            circles[2] = (circles[2] / dreams.length);
-                            circles[3] = (circles[3] / dreams.length);
-                            makeBarChart(emotions, document.getElementById("emotionsUl"));
-                            makeBarChart(people, document.getElementById("peopleUl"));
-                            fillCircles();
-                           
-                            setTimeout(() => {
-                                document.querySelector(".home-container").style.opacity = "1";
-                            }, 50);
+                            const data = await response.json();
+                            if(data.message == "success"){
+                                localStorage.clear();
+                                window.location.href = "/login.html?start=login";
+                            } 
+                        } catch (error) {
+                            console.error('Error fetching data:', error);
                         }
                     }
-                } catch (error) {
-                    console.error('Error fetching data:', error);
-                }
-            }
-            getDreams();
-
-            document.querySelectorAll(".ana-semi-holder").forEach(holder => {
-                holder.addEventListener("wheel", (e) => {
-                    e.preventDefault();
+                    deleteData();
                 });
-                holder.addEventListener('scroll', () => {
-                    holder.scrollTop = 0;
-                    holder.scrollLeft = 0;
-                });
-            });
-
-            setTimeout(() => {
-                document.querySelectorAll(".ana-left-col .ana-wrapper").forEach(wrapper => {
-                    wrapper.style.height = document.querySelectorAll(".ana-wrapper")[5].clientHeight + "px";
-                });
-            }, 1000);
+            /////////////////////////////////////////////////////////
         }
-
-        if(document.querySelector(".profile")){
-            if(userData.name == "n/a"){
-                document.getElementById("logoutOption").style.display = "none";
-            } else {
-                document.getElementById("createAccountOption").style.display = "none";
-                document.getElementById("loginOption").style.display = "none";
-            }
-
-            document.getElementById("logoutOption").addEventListener("click", () => {
-                async function logout(){
-                    try {
-                        const response = await fetch(`${url}/api/logout`, {
-                            method: 'GET',
-                            credentials: 'include'
-                        });
-                        const data = await response.json(); 
-                        if(data.message == "success"){
-                            localStorage.clear();
-                            window.location.href = "/login.html?start=login";
-                        }
-                    } catch (error) {
-                        console.error('Error fetching data:', error);
-                    }
-                }
-                logout();
-            });
-
-            document.getElementById("deleteOption").addEventListener("click", () => {
-                document.getElementById("deleteDataModal").style.opacity = "1";
-                document.getElementById("deleteDataModal").style.pointerEvents = "auto";
-            });
-
-            document.getElementById("deleteDataBtn").addEventListener("click", () => {
-                async function deleteData(){
-                    try {
-                        const response = await fetch(`${url}/api/delete-data`, {
-                            method: 'GET',
-                            credentials: 'include'
-                        });
-                        const data = await response.json();
-                        if(data.message == "success"){
-                            localStorage.clear();
-                            window.location.href = "/login.html?start=login";
-                        } 
-                    } catch (error) {
-                        console.error('Error fetching data:', error);
-                    }
-                }
-                deleteData();
-            });
-        }
-
+        
         if(document.querySelector(".login")){
             if(params.get("start") == "login"){
                 document.getElementById("signForm").style.display = "none";
@@ -1441,8 +1472,10 @@ async function getUserData(){
             }
         });
         setTimeout(() => {
-            document.querySelector(".home-container, .log-container").style.opacity = "1";
-            document.querySelector(".home-container, .log-container").style.transform = "translateY(0px)";
+            document.querySelectorAll(".home-container, .log-container").forEach(cont => {
+                cont.style.opacity = "1";
+                cont.style.transform = "translateY(0px)";    
+            });
         }, 150);
         /*/////////////////////////////////////*/
 
