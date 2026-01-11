@@ -117,6 +117,132 @@ const techData = [
 
 const tutData = [
     {
+        "title": "Wake Induced Lucid Dream (WILD)",
+        "headings": [
+            "Step 1: Relax Deeply",
+            "Step 2: Maintain Awareness",
+            "Step 3: Observe Hypnagogia",
+            "Step 4: Visualize Your Dream",
+            "Step 5: Surrender and Enter"
+        ],
+        "paras": [
+            "Lie down comfortably and release tension in your body. Focus on steady breathing and notice the gentle rhythm of each breath as your muscles soften and your mind remains lightly alert.<br><br>Relaxation opens the gateway to lucid dreaming. When the body rests but awareness remains, the mind senses the threshold between waking and dreaming. Observing these subtle shifts cultivates clarity and patience, allowing inner growth like ripening fruits. The mind prepares to enter the dream world consciously, moving freely while maintaining focus, attention, and subtle guidance throughout the transition.",
+
+            "Keep attention gentle but steady as your body drifts toward sleep. Notice thoughts and sensations, allowing them to come and go without attachment, letting your awareness float like a light breeze.<br><br>This soft awareness ensures your spirit remains attentive while physical senses fade. Observing the subtle shift between wakefulness and sleep strengthens discernment. Each moment of mindfulness nurtures inner growth, like tending small fruits, allowing the mind to notice dream signs and prepare for conscious entry into the dream world with clarity, patience, and subtle, guiding presence.",
+
+            "Observe the flickering shapes, colors, and light behind your closed eyelids. Hypnagogic imagery often appears in brief, shifting patterns that hint at dream formation.<br><br>Watching these signs trains the mind to detect anomalies that indicate a dream is beginning. Each careful observation strengthens awareness and attention. Like harvesting small fruits, noticing details cultivates focus and insight. By attending to these pre-dream signals, the mind prepares to enter the dream consciously, balancing observation with subtle inner guidance and creating a smooth bridge between waking and dreaming states.",
+
+            "Visualize the dream you wish to enter in detail. Imagine moving freely, interacting consciously, and exploring while remaining aware of inner guidance and subtle spiritual presence.<br><br>Deliberate visualization strengthens pathways for lucid awareness. Each rehearsal primes the mind to remain conscious as the dream begins. Like planting seeds that grow into fruits of clarity, visualization integrates focus, intention, and inner discernment. Your dream space becomes fertile for conscious exploration, where awareness guides every movement and observation, allowing intentional navigation and subtle understanding of the dream environment.",
+
+            "Allow yourself to gently surrender to sleep while maintaining awareness. Feel the body drift fully into rest while the mind observes dream sensations and movement unfolding.<br><br>This balance of letting go and attentive observation preserves lucidity. Mindful surrender cultivates clarity and patience. Like tending growing fruits, awareness strengthens naturally. The dream becomes a space for conscious exploration, where perception and focus coexist with subtle inner guidance. Each experience deepens discernment, allowing intentional actions and growth within dreams while building habits of clarity, attention, and mindful presence in daily life."
+        ]
+    },
+    {
+        "title": "Memory Induced Lucid Dream (MILD)",
+        "headings": [
+            "Step 1: Set Your Intention",
+            "Step 2: Recall Your Dreams",
+            "Step 3: Affirm Your Awareness",
+            "Step 4: Visualize Becoming Lucid",
+            "Step 5: Drift to Sleep Mindfully"
+        ],
+        "paras": [
+            "Before sleep, state clearly that you will notice when you are dreaming. Repeat this intention with focus, letting the meaning settle gently in your mind.<br><br>Intention plants a seed in consciousness, preparing awareness to bloom in dreams. This practice nurtures patience and clarity, like cultivating fruits that ripen over time. By focusing on your goal, you train the mind to recognise dream signs and maintain alertness, allowing lucidity to arise naturally while the body rests and the spirit remains attentive to subtle signals in the dream threshold.",
+
+            "Recall recent dreams in detail, noticing sensations, emotions, and patterns that seem unusual. Observe inconsistencies that reveal dream logic.<br><br>Reflection strengthens memory and awareness. By harvesting the small fruits of past experiences, the mind learns to detect anomalies more quickly. This attention cultivates clarity, patience, and subtle discernment. Observing past dreams prepares consciousness to recognise dream signs with ease. The habit grows inner focus, allowing the mind to enter future dreams with readiness, intention, and gentle presence, bridging waking reflection with lucid awareness in a way that nourishes growth and mindful perception.",
+
+            "Repeat affirmations like 'I will know I am dreaming' or 'I remain aware within dreams.' Speak them with attention and intention, feeling their subtle meaning.<br><br>Affirmations reinforce focus and cultivate lucidity. Each repetition strengthens attention and patience, nurturing insight like ripening fruits. This gentle reinforcement encourages the mind to carry awareness into sleep. By combining words with observation, intention prepares the mind to notice when a dream begins. Consistent practice deepens clarity, discernment, and mindful presence, allowing conscious navigation in dreams and fostering subtle inner growth throughout sleep and waking life.",
+
+            "Visualize yourself back in a previous dream, recognising it as a dream and acting with awareness. Imagine moving freely, observing details, and responding intentionally.<br><br>Deliberate visualization strengthens pathways for lucid consciousness. By rehearsing actions and interactions in your mind, you cultivate insight, clarity, and subtle focus. Like tending small fruits, consistent practice nourishes awareness and mental preparedness. The dream space becomes fertile for exploration and conscious choice. Visualization integrates intention and presence, ensuring the mind remains alert, patient, and capable of navigating dreams with clarity, focus, and subtle guidance, fostering mindful lucidity over time.",
+
+            "Drift into sleep while maintaining soft awareness. Notice sensations, thoughts, and subtle dream cues as your body rests fully and your mind observes.<br><br>This mindful transition balances surrender with alertness, preserving lucidity. Observing the shift cultivates clarity and subtle inner growth, like nurturing ripening fruits. Dreams become spaces for intentional exploration, where perception, focus, and guidance coexist. Each night strengthens the mind’s ability to recognise dream signs and act consciously, building habits of presence and discernment that carry into waking life, fostering patience, clarity, and mindful awareness in every moment."
+        ]
+    },
+    {
+        "title": "Anchor Technique",
+        "headings": [
+            "Step 1: Choose Your Anchor",
+            "Step 2: Focus Daily",
+            "Step 3: Test Its Presence",
+            "Step 4: Reinforce in Reflection",
+            "Step 5: Carry it Into Dreams"
+        ],
+        "paras": [
+            "Select a meaningful object, gesture, or phrase to act as your anchor. It should be simple, yet significant enough to draw your awareness when needed.<br><br>The anchor serves as a point of clarity in both waking life and dreams. By returning to it regularly, you cultivate mindful attention. Like a fruit-bearing tree, consistent practice strengthens the mind’s ability to stay aware and attentive. This small habit lays the groundwork for conscious exploration, allowing recognition of subtle shifts and inconsistencies that signal dream states, while nurturing patience, discernment, and inner balance.",
+
+            "Throughout the day, revisit your anchor. Focus on its significance and use it to ground attention whenever you notice distraction or drifting thoughts.<br><br>Daily engagement reinforces mindfulness and cultivates awareness. Like tending growing fruits, repeated practice strengthens clarity and discernment. Returning to your anchor trains your mind to notice when reality shifts, developing readiness to recognise dream signs. This subtle attentiveness prepares consciousness for both waking presence and lucid dreaming, fostering a gentle, steady awareness that becomes second nature and enriches perception, focus, and thoughtful engagement in all moments.",
+
+            "Actively test your anchor by touching it, using its gesture, or saying its phrase, noticing the effect it has on attention and presence.<br><br>This repeated testing strengthens habits of reality-checking and discernment. Like harvesting ripening fruits, each check cultivates inner clarity. By reinforcing the anchor’s presence, you train the mind to remain alert even during sleep. This practice encourages subtle awareness, patience, and focus, creating a bridge between waking attention and lucid dream recognition. Each use of the anchor strengthens conscious presence, allowing the mind to respond intentionally to the dream world and daily life alike.",
+
+            "Integrate your anchor into reflection or meditation. Focus on its symbolism, allowing it to connect with inner guidance and subtle intuition.<br><br>Reflection amplifies the anchor’s effectiveness, cultivating awareness and insight. Like nourishing fruits with care, this practice strengthens focus, patience, and perception. Anchoring consciousness in this way prepares the mind to maintain lucidity in dreams. Each moment of meditation or reflection grows clarity and intentionality, fostering a steady inner presence that carries into sleep, where dreams become spaces for conscious awareness and mindful exploration, guided by cultivated insight and subtle attentiveness.",
+
+            "Carry your anchor into dreams by holding it mentally or invoking its gesture during sleep. Let it stabilise awareness and maintain clarity within dream experiences.<br><br>By anchoring consciousness, your mind remains alert even as the dream world unfolds. This practice cultivates subtle discernment, patience, and clarity, like nurturing fruits to ripeness. Dreams become spaces for intentional navigation, observation, and mindful engagement. The anchor connects waking mindfulness with dream lucidity, allowing consistent awareness, deliberate action, and subtle guidance. Each practice strengthens conscious presence, fostering clarity, focus, and inner growth both in sleep and waking life."
+        ]
+    },
+    {
+        "title": "Senses Initiated Lucid Dream (SILD)",
+        "headings": [
+            "Step 1: Prepare Your Mind",
+            "Step 2: Focus on Sensations",
+            "Step 3: Move Attention Slowly",
+            "Step 4: Detect Dream Signs",
+            "Step 5: Enter Consciously"
+        ],
+        "paras": [
+            "Lie down comfortably and settle your body. Take slow breaths and allow awareness to focus inward, noticing subtle sensations in your fingers, toes, and limbs.<br><br>This preparation grounds attention and sharpens sensory perception. By observing these small signals, you cultivate mindfulness, patience, and readiness. Like tending small fruits, consistent practice strengthens awareness. SILD teaches the mind to detect subtle cues that indicate dreaming, allowing you to cross the threshold consciously, observing the dream world with clarity, focus, and a gentle sense of presence while maintaining inner guidance and balance.",
+
+            "Shift your attention gently between sensations in different parts of your body. Notice tingling, warmth, or subtle pressure as if each is a clue pointing toward heightened awareness.<br><br>Slowly moving focus trains attentiveness and sensory discernment. Like observing ripening fruits, you nurture perception while avoiding distraction. This practice strengthens the mind’s ability to notice unusual sensations that often precede lucid dreaming. Awareness grows steadily, preparing you to recognise dream signs when they appear. Sensory mindfulness bridges waking and dreaming, creating fertile ground for conscious entry and subtle guidance throughout the dream experience.",
+
+            "Continue moving attention systematically through the body, letting each sensation be observed without judgment or expectation. Stay patient and grounded.<br><br>This method cultivates fine awareness and subtle attentiveness. Observing each sensation trains the mind to notice inconsistencies or anomalies, which are often early indicators of dreams. Like cultivating a garden of small fruits, careful attention nurtures focus and clarity. These cultivated habits allow the mind to step consciously into a dream once signs appear, strengthening lucidity and the ability to act intentionally while exploring the dream space.",
+
+            "As sensations become more vivid, begin noticing patterns or dream-like cues. Allow the mind to interpret small irregularities as signs of dreaming.<br><br>Detection of dream signs strengthens discernment and presence. Like harvesting tiny fruits, recognizing these subtle markers cultivates clarity and patience. By attending closely to inner signals, the mind becomes skilled at noticing the threshold between waking and dreaming. This process primes conscious entry, allowing the dream experience to unfold while awareness remains intact, providing intentional guidance and subtle perceptive growth within the dream.",
+
+            "Gently allow the dream to form around your awareness. Step into it consciously while maintaining attention to the environment and your inner senses.<br><br>This deliberate transition preserves lucidity and strengthens perception. Like walking through a garden of ripening fruits, awareness guides every movement and observation. The dream becomes a space for conscious exploration, where clarity, attention, and inner guidance coexist. SILD nurtures the ability to act intentionally in dreams, cultivate subtle insight, and maintain mindful presence, providing a consistent practice for expanding perception, patience, and focused awareness during sleep."
+        ]
+    },
+    {
+        "title": "Dream Journaling",
+        "headings": [
+            "Step 1: Keep Your Journal Ready",
+            "Step 2: Record Immediately",
+            "Step 3: Focus on Details",
+            "Step 4: Reflect on Patterns",
+            "Step 5: Integrate Insight"
+        ],
+        "paras": [
+            "Place a notebook or digital journal beside your bed. Prepare to record dreams immediately upon waking, before details fade.<br><br>Keeping a journal creates a habit of mindful reflection. Like planting seeds for future insight, it nurtures awareness and recognition of dream signs. This practice strengthens memory, attention, and subtle discernment. Observing and recording dreams consistently cultivates clarity and encourages intentional recall, creating fertile ground for lucid dreaming. Each entry allows the mind to detect recurring symbols, sensations, or patterns, helping consciousness become attuned to the subtle signals that indicate dreaming while fostering inner growth.",
+
+            "Immediately upon waking, jot down all dream details remembered, even small fragments, feelings, or unusual elements.<br><br>Recording promptly preserves delicate observations that would otherwise fade. Like harvesting early fruits, this practice captures the essence of dreams for later reflection. Attention to detail nurtures mindfulness and strengthens memory, providing the foundation for lucid dreaming. Observing patterns over time enhances discernment and presence, allowing the mind to anticipate dream cues. Journaling fosters awareness, patience, and clarity, and the repeated practice encourages growth of conscious recognition, helping the mind bridge waking reflection with intentional dream exploration.",
+
+            "Include as many sensory details as possible: sights, sounds, textures, emotions, and thoughts experienced.<br><br>Focusing on details strengthens attention and subtle perception. Like tending a garden of small fruits, observation cultivates insight, patience, and awareness. Recording sensory elements helps the mind detect anomalies in dreams, building recognition skills and mindfulness. Over time, reviewing entries allows identification of recurring symbols and signs. This reflection strengthens discernment, trains memory, and enhances the ability to remain alert in dreams, preparing the mind to act consciously while exploring dream environments with intention and subtle inner guidance.",
+
+            "Periodically review your journal for patterns or recurring themes. Reflect on unusual symbols, repeated sensations, or emotional responses.<br><br>Reflection deepens understanding and strengthens insight. Like assessing ripening fruits, recognizing patterns cultivates clarity and patience. Awareness of recurring elements provides clues for future lucid dreaming. Observing these motifs allows the mind to anticipate dream signs, increasing readiness for conscious entry. Journaling integrates mindfulness, memory, and reflection, fostering subtle discernment. Each review encourages intentional exploration in dreams, nurturing attention, inner guidance, and the ability to respond thoughtfully within dream spaces while maintaining awareness and clarity.",
+
+            "Use insights gained to inform nightly intentions and dream practice. Let recurring themes guide attention and awareness during sleep.<br><br>Integrating lessons from journaling strengthens lucid dreaming potential. Like harvesting fruits at peak ripeness, reflection produces knowledge and clarity that informs conscious action. Mindful application of dream patterns cultivates presence, insight, and subtle discernment. Each observation and integration enhances the ability to notice dream signs and act intentionally. The journal becomes a tool for awareness, patience, and inner growth, linking waking reflection to dream navigation while supporting subtle guidance, clarity, and purposeful exploration."
+        ]
+    },
+    {
+        "title": "Wake Back To Bed (WBTB)",
+        "headings": [
+            "Step 1: Set an Alarm",
+            "Step 2: Wake and Reflect",
+            "Step 3: Stay Mindful",
+            "Step 4: Return to Sleep",
+            "Step 5: Maintain Awareness"
+        ],
+        "paras": [
+            "Set an alarm to wake yourself after four to six hours of sleep, when dreams are often longer and more vivid. Awaken fully enough to regain alertness while staying calm and relaxed.<br><br>This timing enhances lucidity by bridging conscious awareness with dream cycles. Like preparing fertile soil for growing fruits, waking briefly nurtures focus and intention. The brief pause strengthens discernment, attention, and readiness. Observing sensations and thoughts while awake primes the mind to recognise dream cues upon returning to sleep, increasing the likelihood of conscious entry into dreams while cultivating subtle awareness and clarity.",
+
+            "Upon waking, reflect on recent dreams and your intention to recognise dreaming. Engage your mind gently without becoming fully active or distracted.<br><br>Reflection reinforces awareness and primes the mind for lucidity. Like tending young fruits carefully, this practice nurtures discernment and focus. Briefly observing dreams and reinforcing intention strengthens attention, helping the mind recognise subtle cues during subsequent sleep. The process cultivates patience, mindfulness, and clarity, bridging the waking state with dream cycles. Maintaining a balance of gentle reflection and calm observation prepares the mind for conscious re-entry into dreams while fostering subtle growth and perceptive awareness.",
+
+            "Stay awake for ten to thirty minutes, focusing on mindful practices like reading, visualization, or reflection. Avoid stimulating activities that disrupt calm awareness.<br><br>This period deepens alertness and intention, enhancing the mind’s sensitivity to dream signs. Like tending fruit, careful attention nurtures clarity and patience. Maintaining subtle focus during this interval strengthens readiness and the ability to detect anomalies in dreams. Mindful observation and gentle reflection cultivate inner growth, preparing the mind for lucid dreaming while ensuring awareness and attention remain attuned to subtle cues present at the threshold of sleep.",
+
+            "Return to bed calmly, settling into a relaxed position while keeping awareness lightly active. Focus on intention and gentle visualization of entering a lucid dream.<br><br>Transitioning back into sleep mindfully preserves lucidity. Like guiding ripening fruits to full maturity, calm focus strengthens clarity, attention, and subtle insight. Observing sensations and remaining present while drifting into sleep primes the mind for conscious dreaming. This method nurtures patience, awareness, and discernment, enhancing the ability to enter dreams intentionally, act with clarity, and respond thoughtfully within the dream environment while sustaining mindful presence.",
+
+            "As you drift into sleep, maintain soft awareness of sensations and subtle cues. Gently notice changes and emerging dream signs without forcing control.<br><br>This practice fosters lucidity and attentive observation. Like harvesting fruits at the right time, subtle awareness ensures readiness to act consciously within dreams. Mindful presence strengthens discernment and clarity, allowing exploration with intention and subtle guidance. Each application of WBTB cultivates patience, focus, and inner growth, connecting waking reflection with dream navigation. Dreams become spaces for conscious action, insight, and subtle understanding, fostering clarity, mindful perception, and attentive awareness during sleep."
+        ]
+    },
+    {
         "headings": [
             "Step 1: Question Things",
             "Step 2: Check Your Hands",
@@ -314,6 +440,7 @@ async function getUserData(){
                 }
     
                 document.querySelector(".btn-forgot").addEventListener("click", () => {
+                    localStorage.setItem("lastDream", currentDate);
                     document.querySelector(".home-cre-card").style.opacity = "0";
                     setTimeout(() => {
                         document.querySelector(".home-cre-card").style.display = "none";
@@ -442,7 +569,8 @@ async function getUserData(){
                 });
                 function changeTut(newIdx){
                     tutIdx = newIdx;
-                    if(tutIdx == 5) tutIdx = 0;
+                    if(tutIdx == tutData.length) tutIdx = 0;
+                    currentTut = tutData[tutIdx];
                     document.querySelectorAll(".tut-img img, .tut-head, .tut-para").forEach(el => {
                         el.classList.add("tut-inactive");
                     });
